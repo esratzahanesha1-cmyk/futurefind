@@ -1,633 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FutureFind — Discover. Learn. Build.</title>
-<meta name="description" content="FutureFind helps learners discover career directions, explore a visual future map, learn through topic-based study labs, and build an actionable roadmap.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FutureFind — Class 9–10</title>
 <style>
-:root{
-  --bg:#f7f8fc;--card:#fff;--ink:#152033;--muted:#667085;--primary:#5b4bdb;
-  --primary2:#7c6cf0;--line:#e6e8f0;--soft:#f0efff;--good:#16865a;--bad:#c43d52;
-  --shadow:0 18px 55px rgba(31,35,58,.10);--radius:22px;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-button,input,select{font:inherit}
-button{cursor:pointer}
-a{color:inherit}
-.app{min-height:100vh}
-.topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav{max-width:1180px;margin:auto;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
-.logo{font-weight:900;letter-spacing:-.8px;font-size:22px}
-.logo span{color:var(--primary)}
-.navlinks{display:flex;gap:8px}
-.navlinks button{border:0;background:transparent;padding:10px 13px;border-radius:12px;color:var(--muted)}
-.navlinks button:hover{background:var(--soft);color:var(--primary)}
-.container{max-width:1180px;margin:auto;padding:28px 20px 70px}
-.hero{padding:55px 0 35px;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
-.eyebrow{display:inline-flex;gap:8px;align-items:center;background:var(--soft);color:var(--primary);padding:8px 12px;border-radius:999px;font-weight:800;font-size:13px}
-h1{font-size:clamp(40px,6vw,72px);line-height:.98;letter-spacing:-3px;margin:18px 0}
-h2{font-size:34px;letter-spacing:-1.2px;margin:0 0 12px}
-h3{margin:0 0 8px}
-p{line-height:1.65;color:var(--muted)}
-.hero p{font-size:18px;max-width:680px}
-.btn{border:0;border-radius:14px;padding:13px 18px;font-weight:800;transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:8px}
-.btn:hover{transform:translateY(-1px)}
-.btn.primary{background:var(--primary);color:#fff;box-shadow:0 10px 25px rgba(91,75,219,.25)}
-.btn.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
-.btn.ghost{background:var(--soft);color:var(--primary)}
-.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
-.hero-card{background:linear-gradient(145deg,#171d33,#332a69);color:#fff;border-radius:30px;padding:28px;box-shadow:var(--shadow);min-height:330px;position:relative;overflow:hidden}
-.hero-card:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;right:-90px;top:-70px;background:rgba(255,255,255,.10)}
-.orbit{display:grid;place-items:center;height:240px;position:relative}
-.orbit .center{background:#fff;color:var(--primary);font-weight:900;padding:18px 22px;border-radius:18px;z-index:2}
-.node{position:absolute;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:9px 12px;border-radius:999px;font-size:12px;font-weight:800}
-.n1{top:10px}.n2{right:4px;top:85px}.n3{right:25px;bottom:12px}.n4{left:5px;bottom:22px}.n5{left:0;top:92px}
-.section{margin-top:35px}
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.feature{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:0 8px 25px rgba(31,35,58,.04)}
-.icon{width:45px;height:45px;border-radius:14px;background:var(--soft);display:grid;place-items:center;font-size:22px;margin-bottom:15px}
-.muted{color:var(--muted)}
-.hidden{display:none!important}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:var(--shadow)}
-.progress{height:9px;background:#ececf4;border-radius:99px;overflow:hidden}
-.progress > div{height:100%;background:linear-gradient(90deg,var(--primary),#8f7fff);transition:.3s}
-.progressrow{display:flex;justify-content:space-between;font-size:13px;font-weight:800;color:var(--muted);margin-bottom:9px}
-.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-label{font-weight:800;font-size:14px}
-input,select{width:100%;margin-top:8px;border:1px solid var(--line);border-radius:14px;padding:13px 14px;background:#fff;outline:none}
-input:focus,select:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(91,75,219,.09)}
-.questionbox{margin-top:25px}
-.qnum{color:var(--primary);font-weight:900;font-size:13px}
-.question{font-size:25px;line-height:1.3;margin:10px 0 20px}
-.optiongrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.option{border:1px solid var(--line);background:#fff;border-radius:17px;padding:16px;text-align:left;min-height:72px;font-weight:750;transition:.2s}
-.option:hover{border-color:#b8b1ff;background:#faf9ff}
-.option.selected{border:2px solid var(--primary);background:var(--soft);color:var(--primary)}
-.option small{display:block;color:var(--muted);font-weight:500;margin-top:4px}
-.quizactions{display:flex;justify-content:space-between;gap:10px;margin-top:24px}
-.notice{background:#fff8e7;border:1px solid #f3dfab;color:#72570b;padding:12px 14px;border-radius:14px;margin-top:15px}
-.resultHero{background:linear-gradient(135deg,#20194f,#5b4bdb);color:#fff;border-radius:28px;padding:28px;margin-bottom:18px}
-.resultHero p{color:#eee}
-.scoregrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
-.score{background:rgba(255,255,255,.12);border-radius:15px;padding:14px}
-.score b{font-size:24px;display:block}
-.careergrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.career{border:1px solid var(--line);border-radius:22px;padding:20px;background:#fff}
-.rank{font-size:12px;color:var(--primary);font-weight:900}
-.match{font-size:28px;font-weight:900;margin:8px 0}
-.tags{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}
-.tag{background:#f3f4f8;padding:6px 9px;border-radius:999px;font-size:12px;font-weight:750;color:#4d5669}
-.career-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
-.tab{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 13px;font-weight:800;color:var(--muted)}
-.tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
-.mindmap{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:14px;align-items:center;margin-top:18px}
-.mcol{display:flex;flex-direction:column;gap:12px}
-.mnode{background:#fff;border:1px solid var(--line);border-radius:17px;padding:14px;font-weight:800;box-shadow:0 7px 20px rgba(31,35,58,.05);text-align:center}
-.mnode.clickable:hover{border-color:var(--primary);color:var(--primary)}
-.mcenter{background:var(--soft);border:2px solid #d4cffd;border-radius:24px;padding:30px;text-align:center;font-weight:900;color:var(--primary);font-size:22px}
-.lesson{display:grid;grid-template-columns:1.3fr .7fr;gap:18px}
-.lesson-main,.lesson-side{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px}
-.checklist{padding-left:20px;color:var(--muted);line-height:1.9}
-.key{background:var(--soft);border-left:4px solid var(--primary);padding:14px 16px;border-radius:0 14px 14px 0}
-.source{display:block;text-decoration:none;border:1px solid var(--line);padding:12px;border-radius:13px;margin-top:9px;background:#fff}
-.source:hover{border-color:var(--primary)}
-.quizcard{margin-top:18px}
-.feedback{margin-top:12px;padding:12px 14px;border-radius:13px;font-weight:700}
-.good{background:#eaf8f1;color:var(--good)}
-.bad{background:#fff0f2;color:var(--bad)}
-.roadmap{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.step{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;position:relative}
-.step .month{color:var(--primary);font-weight:900;font-size:12px}
-.badges{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.badge{background:#fff;border:1px solid var(--line);border-radius:18px;padding:17px;text-align:center}
-.badge .emoji{font-size:30px}
-.cta{margin-top:30px;background:#171d33;color:#fff;border-radius:26px;padding:28px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.cta p{color:#cbd0df}
-.footer{padding:35px 20px;text-align:center;color:var(--muted);font-size:13px}
-.small{font-size:13px}
-.toast{position:fixed;right:18px;bottom:18px;background:#171d33;color:#fff;padding:13px 16px;border-radius:14px;box-shadow:var(--shadow);z-index:50}
-@media(max-width:900px){
- .hero{grid-template-columns:1fr}.grid4{grid-template-columns:1fr 1fr}.careergrid,.lesson{grid-template-columns:1fr}.roadmap{grid-template-columns:1fr 1fr}.badges{grid-template-columns:1fr 1fr}
-}
-@media(max-width:650px){
- .nav{height:62px}.navlinks{display:none}.container{padding:20px 14px 55px}.hero{padding-top:30px}h1{letter-spacing:-2px}
- .formgrid,.optiongrid,.grid4,.scoregrid,.roadmap{grid-template-columns:1fr}.panel{padding:19px}.question{font-size:21px}.mindmap{grid-template-columns:1fr}.mcenter{order:-1}
- .cta{flex-direction:column;align-items:flex-start}.careergrid{grid-template-columns:1fr}
-}
-@media print{
- .topbar,.hero-actions,.btn,.tabs,.footer,.cta{display:none!important}
- body{background:#fff}.panel,.resultHero,.career,.step{box-shadow:none}
-}
+:root{--p:#5865f2;--p2:#7b4fe8;--bg:#f6f7fb;--ink:#172033;--muted:#68738a;--line:#e4e7ef;--card:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+button{font:inherit;cursor:pointer}.wrap{max-width:1100px;margin:auto;padding:18px}.nav{display:flex;justify-content:space-between;align-items:center;padding:8px}.logo{font-size:22px;font-weight:900}.logo b{display:inline-grid;place-items:center;width:38px;height:38px;background:linear-gradient(135deg,var(--p),var(--p2));color:white;border-radius:12px;margin-right:8px}
+nav button,.ghost{border:0;background:transparent;color:var(--muted);padding:9px 12px}.hero,.panel,.card{background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:0 10px 35px #24335b12}
+.hero{padding:45px;margin-top:18px;background:linear-gradient(135deg,#fff,#eef0ff)}h1{font-size:clamp(36px,7vw,64px);line-height:1.03;margin:12px 0}h2{margin:8px 0 10px}p{line-height:1.7;color:var(--muted)}
+.primary{background:linear-gradient(135deg,var(--p),var(--p2));color:white;border:0;padding:13px 18px;border-radius:12px;font-weight:800}.secondary{background:white;border:1px solid var(--line);padding:13px 18px;border-radius:12px;font-weight:700}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:20px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin-top:20px}.card{padding:21px}.icon{font-size:30px}.tag{font-size:12px;font-weight:800;color:var(--p);background:#eef0ff;padding:5px 9px;border-radius:99px}
+.screen{margin-top:22px}.panel{padding:26px}.hidden{display:none}input,select{width:100%;padding:13px;border:1px solid var(--line);border-radius:11px;background:white;margin:7px 0 15px}
+.choices{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}.choice{text-align:left;background:white;border:2px solid var(--line);padding:18px;border-radius:15px}.choice.sel{border-color:var(--p);background:#eef0ff}
+.lesson{font-size:16px;color:#39445b}.note,.activity{padding:14px 16px;border-radius:10px;margin:16px 0}.note{background:#f0f2ff;border-left:4px solid var(--p)}.activity{background:#effaf5;border-left:4px solid #15966a}
+.quiz{border-bottom:1px solid var(--line);padding:17px 0}.opt{display:block;width:100%;text-align:left;background:white;border:1px solid var(--line);padding:11px;border-radius:9px;margin:7px 0}.opt.sel{background:#eef0ff;border-color:var(--p)}
+.bar{height:9px;background:#eceef5;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--p),var(--p2))}
+.road{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.month{padding:17px;border:1px solid var(--line);border-radius:15px}.month strong{color:var(--p)}
+footer{text-align:center;color:var(--muted);padding:35px;font-size:13px}
+@media(max-width:760px){.grid,.grid2,.road{grid-template-columns:1fr}.choices{grid-template-columns:1fr}.hero{padding:30px 22px}nav{display:none}}
 </style>
 </head>
 <body>
-<div class="app">
-<header class="topbar">
-  <nav class="nav">
-    <div class="logo">Future<span>Find</span></div>
-    <div class="navlinks">
-      <button onclick="go('home')">Home</button>
-      <button onclick="go('discover')">Discover</button>
-      <button onclick="go('mindmap')">Future Map</button>
-      <button onclick="go('lab')">Study Lab</button>
-      <button onclick="go('roadmap')">Roadmap</button>
-    </div>
-  </nav>
-</header>
+<div class="wrap">
+<header class="nav"><div class="logo"><b>F</b>FutureFind</div><nav>
+<button onclick="show('home')">Home</button><button onclick="show('subjects')">Learn</button><button onclick="profile()">My Profile</button><button onclick="roadmap()">Roadmap</button>
+</nav></header>
 
-<main class="container">
-<section id="home" class="view">
-  <div class="hero">
-    <div>
-      <span class="eyebrow">✨ A learning-first career discovery platform</span>
-      <h1>Find your direction.<br><span style="color:var(--primary)">Build your future.</span></h1>
-      <p>FutureFind connects self-discovery with real learning. Explore career paths, understand why they fit you, learn the skills behind them, and turn curiosity into an actionable roadmap.</p>
-      <div class="hero-actions">
-        <button class="btn primary" onclick="startDiscovery()">🚀 Start My Career Journey</button>
-        <button class="btn secondary" onclick="go('mindmap')">🧠 Explore Future Map</button>
-      </div>
-    </div>
-    <div class="hero-card">
-      <div style="font-weight:900;font-size:14px;opacity:.8">YOUR FUTURE JOURNEY</div>
-      <div class="orbit">
-        <div class="node n1">Interests</div><div class="node n2">Skills</div><div class="node n3">Careers</div><div class="node n4">Learning</div><div class="node n5">Roadmap</div>
-        <div class="center">FUTURE<br>FIND</div>
-      </div>
-      <div class="small" style="opacity:.8">Discover → Learn → Practice → Build</div>
-    </div>
-  </div>
+<section id="home" class="screen">
+<div class="hero"><span class="tag">FOR CLASS 9–10</span>
+<h1>Learn today.<br>Discover your future.</h1>
+<p>FutureFind connects Class 9–10 learning with real-life skills and career exploration. Learn a concept, practise it, discover your strengths, and explore where your learning can lead.</p>
+<div class="row"><button class="primary" onclick="start()">🚀 Start Learning Journey</button><button class="secondary" onclick="show('subjects')">📚 Explore Subjects</button></div></div>
+<div class="grid">
+<div class="card"><div class="icon">📚</div><h3>Learn</h3><p>Curriculum-aligned concepts explained in simple language.</p></div>
+<div class="card"><div class="icon">🧠</div><h3>Practice</h3><p>Activities and quizzes check real understanding.</p></div>
+<div class="card"><div class="icon">🚀</div><h3>Connect to Careers</h3><p>See how subjects and skills connect to future pathways.</p></div>
+</div></section>
 
-  <div class="section">
-    <div style="margin-bottom:18px"><h2>More than a career quiz</h2><p>One place to discover, learn and plan.</p></div>
-    <div class="grid4">
-      <div class="feature"><div class="icon">🎯</div><h3>Career Discovery</h3><p class="small">A guided questionnaire that turns your interests and strengths into career matches.</p></div>
-      <div class="feature"><div class="icon">🧠</div><h3>Future Map</h3><p class="small">See the knowledge and skills that connect your chosen career to real learning topics.</p></div>
-      <div class="feature"><div class="icon">🧪</div><h3>Study Lab</h3><p class="small">Short lessons, real-world examples, activities and quizzes for every topic.</p></div>
-      <div class="feature"><div class="icon">🗺️</div><h3>My Roadmap</h3><p class="small">Turn learning into projects, experience, portfolio work and your next step.</p></div>
-    </div>
-  </div>
+<section id="start" class="screen hidden"><div class="panel"><span class="tag">GET STARTED</span><h2>Tell us about you</h2>
+<p>Choose your class so FutureFind can personalize your journey.</p><label>Name</label><input id="name" placeholder="Your name"><label>Class</label><select id="cls"><option>9</option><option>10</option></select>
+<div class="row"><button class="secondary" onclick="show('home')">← Back</button><button class="primary" onclick="begin()">Continue →</button></div></div></section>
 
-  <div class="cta">
-    <div><h3 style="font-size:24px">Not sure what your future looks like?</h3><p>Start with 10 questions. You can edit your answers anytime.</p></div>
-    <button class="btn primary" onclick="startDiscovery()">Start in 3 minutes →</button>
-  </div>
-</section>
+<section id="subjects" class="screen hidden"><div class="panel"><span class="tag">CLASS 9–10</span><h2>Choose a subject</h2><p>Start with a topic. The same structure can later contain the full textbook.</p><div id="subjectGrid" class="grid"></div></div></section>
 
-<section id="discover" class="view hidden">
-  <div class="panel">
-    <div class="progressrow"><span id="progressLabel">About you</span><span id="progressText">1 / 10</span></div>
-    <div class="progress"><div id="progressBar" style="width:10%"></div></div>
+<section id="lesson" class="screen hidden"><div id="lessonBox" class="panel"></div></section>
+<section id="quiz" class="screen hidden"><div class="panel"><span class="tag">5-QUESTION QUIZ</span><h2 id="quizTitle"></h2><div id="quizBox"></div><div class="row"><button class="secondary" onclick="lesson()">← Back</button><button class="primary" onclick="submitQuiz()">Submit Quiz</button></div></div></section>
 
-    <div id="profileStep" style="margin-top:24px">
-      <span class="eyebrow">01 · Start your profile</span>
-      <h2 style="margin-top:14px">Tell us a little about you.</h2>
-      <p>This helps us make the journey feel personal. No answer is “wrong”.</p>
-      <div class="formgrid">
-        <label>Name<input id="nameInput" placeholder="Your name"></label>
-        <label>Education level<select id="eduInput"><option>Secondary school</option><option>Higher secondary</option><option>University</option><option>Other</option></select></label>
-      </div>
-      <div class="quizactions"><span></span><button class="btn primary" onclick="beginQuiz()">Continue →</button></div>
-    </div>
+<section id="profile" class="screen hidden"><div class="panel"><span class="tag">YOUR LEARNING PROFILE</span><h2 id="hello"></h2><p id="summary"></p><div id="strengths"></div></div>
+<div class="grid2"><div class="card"><h3>🧭 Career pathways to explore</h3><div id="careers"></div></div><div class="card"><h3>🗺️ Future Map</h3><div id="map"></div></div></div></section>
 
-    <div id="quizStep" class="hidden">
-      <div class="questionbox">
-        <div class="qnum" id="qNum"></div>
-        <div class="question" id="questionText"></div>
-        <div class="muted small" style="margin-bottom:12px">Choose up to <b>2</b> options.</div>
-        <div class="optiongrid" id="options"></div>
-        <div id="selectionNotice" class="notice hidden">Choose at least one option to continue.</div>
-      </div>
-      <div class="quizactions">
-        <button class="btn secondary" onclick="prevQuestion()">← Previous</button>
-        <button class="btn primary" onclick="nextQuestion()" id="nextBtn">Next →</button>
-      </div>
-    </div>
-  </div>
-</section>
+<section id="roadmap" class="screen hidden"><div class="panel"><span class="tag">6-MONTH ROADMAP</span><h2>Your next steps</h2><div id="road" class="road"></div><div class="row"><button class="secondary" onclick="window.print()">🖨️ Print / Save PDF</button><button class="primary" onclick="profile()">View Profile</button></div></div></section>
 
-<section id="results" class="view hidden">
-  <div class="resultHero">
-    <span class="eyebrow" style="background:rgba(255,255,255,.14);color:#fff">🌟 Your Future Profile</span>
-    <h2 id="resultTitle" style="color:#fff;margin-top:14px">Your career matches</h2>
-    <p id="resultIntro"></p>
-    <div class="scoregrid" id="scoreGrid"></div>
-  </div>
-  <div class="panel">
-    <h2>Your top career matches</h2>
-    <p>These are directions to explore—not a final decision. Tap “Explore” to see why a path fits and what you can learn next.</p>
-    <div class="careergrid" id="careerGrid"></div>
-    <div class="hero-actions">
-      <button class="btn secondary" onclick="go('discover');resetToQuestion(0)">← Edit answers</button>
-      <button class="btn primary" onclick="go('mindmap')">Open Future Map →</button>
-      <button class="btn ghost" onclick="printReport()">📄 Print / Save PDF</button>
-    </div>
-  </div>
-</section>
-
-<section id="mindmap" class="view hidden">
-  <div class="panel">
-    <span class="eyebrow">🧠 Future Map</span>
-    <h2 style="margin-top:14px" id="mapTitle">Explore a career through connected learning.</h2>
-    <p id="mapIntro">Choose a career below. Each node opens a focused Study Lab topic.</p>
-    <div class="tabs" id="careerTabs"></div>
-    <div class="mindmap" id="mindmapContent"></div>
-    <div class="hero-actions">
-      <button class="btn primary" onclick="go('lab')">🧪 Enter Study Lab</button>
-      <button class="btn secondary" onclick="go('results')">← Back to careers</button>
-    </div>
-  </div>
-</section>
-
-<section id="lab" class="view hidden">
-  <div class="panel">
-    <span class="eyebrow">🧪 Study Lab</span>
-    <h2 style="margin-top:14px">Learn one topic at a time.</h2>
-    <p id="labIntro">Pick a topic from the tabs. Every lesson contains a short explanation, real-world use, activity and a 5-question quiz.</p>
-    <div class="tabs" id="topicTabs"></div>
-    <div id="lessonArea"></div>
-  </div>
-</section>
-
-<section id="roadmap" class="view hidden">
-  <div class="panel">
-    <span class="eyebrow">🗺️ My Future Roadmap</span>
-    <h2 style="margin-top:14px" id="roadmapTitle">From curiosity to action.</h2>
-    <p id="roadmapIntro">Use this as a flexible six-month guide. Adapt it to your education level and chosen career.</p>
-    <div class="roadmap" id="roadmapGrid"></div>
-    <div class="section">
-      <h2>🏆 Your progress</h2>
-      <p id="xpText">0 XP · 0 topics completed</p>
-      <div class="progress"><div id="xpBar" style="width:0%"></div></div>
-    </div>
-    <div class="section">
-      <h2>Badges</h2>
-      <div class="badges" id="badges"></div>
-    </div>
-    <div class="hero-actions">
-      <button class="btn primary" onclick="printReport()">📄 Print / Save PDF</button>
-      <button class="btn secondary" onclick="go('lab')">Continue learning →</button>
-    </div>
-  </div>
-</section>
-</main>
-
-<div id="toast" class="toast hidden"></div>
-<footer class="footer">FutureFind · Discover. Learn. Build. · Educational prototype</footer>
+<footer>FutureFind • Learn. Discover. Choose your future.</footer>
 </div>
 
 <script>
-const questions = [
- {q:"When you face a difficult problem, what feels most natural?",o:[
-  ["🔎","Investigate the evidence","I want to understand what is really happening."],
-  ["🎨","Imagine a new approach","I like creating possibilities others may not see."],
-  ["🗣️","Ask people and compare ideas","I learn by communicating and collaborating."],
-  ["🚀","Take responsibility and act","I like turning uncertainty into a plan."]]},
- {q:"Which kind of activity could keep you curious for hours?",o:[
-  ["🧠","Understanding people or behaviour","Why people think, feel and act."],
-  ["💻","Building with technology","Websites, apps, AI, data or digital systems."],
-  ["🌍","Solving community problems","Education, equality, environment or public issues."],
-  ["🔬","Testing how things work","Experiments, evidence and scientific questions."]]},
- {q:"Which strength sounds most like you?",o:[
-  ["❤️","Empathy","I notice how others feel and try to understand them."],
-  ["📊","Analytical thinking","I enjoy patterns, evidence and structured reasoning."],
-  ["✨","Creativity","I generate ideas and enjoy expressing them."],
-  ["🧭","Leadership","I like coordinating people and moving projects forward."]]},
- {q:"If you had a free weekend to learn something, what would you pick?",o:[
-  ["🤖","AI or coding","I want to build something digital."],
-  ["🧑‍🏫","Teaching or learning science","I want to understand how people learn."],
-  ["🧬","Health or psychology","I want to understand people and wellbeing."],
-  ["🌱","Sustainability or social impact","I want to solve a real-world problem."]]},
- {q:"What kind of impact would make you proud?",o:[
-  ["👥","Helping people directly","One person’s life becoming better matters to me."],
-  ["🏗️","Building useful products","I want something I create to be useful at scale."],
-  ["📚","Improving education","I want people to have better learning opportunities."],
-  ["🌎","Changing systems","I want to influence policies, communities or institutions."]]},
- {q:"Which work environment sounds best?",o:[
-  ["🧪","Research and experimentation","Questions, evidence and discovery."],
-  ["💡","Creative studio","Ideas, design and making things."],
-  ["🤝","Collaborative team","People solving problems together."],
-  ["🏢","Organising projects","Planning, decisions and measurable outcomes."]]},
- {q:"When learning a new skill, what helps you most?",o:[
-  ["📖","A clear concept first","I like understanding the “why”."],
-  ["🛠️","Hands-on practice","I learn by doing and making mistakes."],
-  ["👩‍🏫","A mentor or teacher","Feedback helps me improve."],
-  ["🎮","Challenges and games","Competition and progress keep me engaged."]]},
- {q:"Which statement feels closest to your future self?",o:[
-  ["🧠","I want to understand people","Human behaviour fascinates me."],
-  ["💻","I want to build with technology","I want digital skills that create things."],
-  ["📣","I want to communicate ideas","Writing, speaking or media attract me."],
-  ["🌱","I want to create social impact","My work should contribute to a better society."]]},
- {q:"What do you do when a project gets stuck?",o:[
-  ["🔬","Look for more evidence","I diagnose the problem before changing direction."],
-  ["🔄","Try a completely different idea","I enjoy reframing the challenge."],
-  ["🤝","Get another perspective","Someone else may see what I missed."],
-  ["📋","Break it into smaller tasks","I make a plan and move step by step."]]},
- {q:"Choose up to two things you want most from a career.",o:[
-  ["🌟","Meaning","I want my work to matter."],
-  ["💰","Opportunity","I want a field with many growth paths."],
-  ["🧠","Continuous learning","I want to keep discovering new things."],
-  ["🎯","Independence","I want room to make decisions and create."]]}
-];
-
-const careers = {
- psychology:{name:"Psychology & Mental Health",icon:"🧠",matchKeys:["human","empathy","health"],desc:"Explore human behaviour, wellbeing, learning and evidence-based support.",roles:["Psychologist","Counselor","Behavioural Researcher","Mental Health Educator"],skills:["Empathy","Research","Communication","Observation"],why:"Your answers show curiosity about people, empathy and a desire to understand behaviour.",topics:["human","research","communication"]},
- technology:{name:"Technology, AI & Data",icon:"💻",matchKeys:["tech","analysis","build"],desc:"Build digital systems and use data and AI to solve practical problems.",roles:["Software Developer","Data Analyst","AI Practitioner","UX/Product Specialist"],skills:["Logic","Problem Solving","Coding","Data Literacy"],why:"You show strong interest in building, solving problems and working with technology.",topics:["web","ai","data"]},
- education:{name:"Education & Learning",icon:"📚",matchKeys:["education","people","communication"],desc:"Understand how people learn and design better teaching, learning and education systems.",roles:["Teacher","Learning Designer","Education Researcher","Education Program Officer"],skills:["Communication","Pedagogy","Research","Creativity"],why:"Your choices suggest an interest in learning, communication and improving opportunities for others.",topics:["learning","research","communication"]},
- social:{name:"Social Impact & Development",icon:"🌍",matchKeys:["impact","communication","people"],desc:"Work on social, development and community challenges through evidence, programs and advocacy.",roles:["Development Professional","Policy Researcher","Program Officer","Advocacy Specialist"],skills:["Research","Communication","Project Planning","Systems Thinking"],why:"You value meaningful work and showed interest in solving community and system-level problems.",topics:["sdg","research","communication"]},
- media:{name:"Media, Communication & Creative Work",icon:"🎨",matchKeys:["creative","communication","build"],desc:"Turn ideas into stories, campaigns, designs and digital experiences.",roles:["Content Strategist","Writer","Creative Producer","Communication Specialist"],skills:["Storytelling","Creativity","Communication","Digital Media"],why:"Your answers show creativity, communication and a desire to express or share ideas.",topics:["communication","design","digital"]},
- science:{name:"Science & Research",icon:"🔬",matchKeys:["analysis","research","experiment"],desc:"Use evidence, experiments and structured reasoning to understand the world and solve problems.",roles:["Researcher","Laboratory Professional","Science Communicator","Research Assistant"],skills:["Critical Thinking","Statistics","Experimentation","Research"],why:"You showed curiosity about evidence, testing ideas and understanding how things work.",topics:["research","data","experiment"]}
+const data={
+math:{s:"Mathematics",icon:"📐",t:"Algebra & Linear Equations",c:"Algebra uses symbols such as x and y to represent unknown or changing quantities. A linear equation such as 2x + 5 = 15 can be solved by applying the same operation to both sides until the variable is isolated. The important skill is understanding the relationship between quantities, not only memorising a procedure.",k:"Check your answer by putting it back into the original equation.",e:"A notebook costs 20 taka more than a pen. If the pen costs x taka, the notebook costs x + 20 taka. Algebra lets us describe and solve this relationship.",a:"Create your own shopping problem with one unknown, write an equation, solve it and check the result.",q:[["If 2x+4=12, x is:",["2","4","6","8"],1],["A variable represents:",["An unknown/changing quantity","Only a unit","A graph","A fixed colour"],0],["Which is linear?",["x²+1","3x+5","1/x","x³"],1],["Why check a solution?",["To verify it satisfies the original equation","To make it longer","To remove x","To draw a graph"],0],["If y=3x and x=4, y is:",["7","9","12","16"],2]]},
+science:{s:"General Science",icon:"🔬",t:"Motion & Speed",c:"Motion means a change in position with time. Speed tells how quickly distance is covered and is calculated as distance divided by time. When speed changes, an object is accelerating or decelerating. These ideas explain bicycles, cars, sports and many everyday situations.",k:"Distance tells how much ground was covered; time tells how long it took; speed connects the two.",e:"A cyclist travels 120 metres in 20 seconds. Average speed is 120 ÷ 20 = 6 metres per second.",a:"Measure a short walking distance, time yourself, calculate average speed, then repeat at a faster pace.",q:[["Speed equals:",["time÷distance","distance÷time","distance×time","distance+time"],1],["A change in position is related to:",["Motion","Colour","Mass only","Sound"],0],["An object getting faster is:",["Accelerating","At rest","Weightless","Invisible"],0],["SI unit of speed:",["metre","second","metre per second","kilogram"],2],["Average speed summarizes:",["Distance over a time interval","Colour","Mass","Temperature"],0]]},
+biology:{s:"Biology",icon:"🧬",t:"Cell & Life Processes",c:"The cell is the basic structural and functional unit of living organisms. Cells contain specialized structures that perform different jobs. The nucleus contains genetic information, while mitochondria help release usable energy from food. In multicellular organisms, cells work together as tissues, organs and organ systems.",k:"Connect each structure to its function instead of memorising names alone.",e:"Muscle cells need substantial energy because muscles perform work, so mitochondria are important for them.",a:"Draw a simple cell, label three structures and write one function for each.",q:[["Basic unit of life:",["Tissue","Cell","Organ","System"],1],["Most genetic information is stored in the:",["Cell wall","Nucleus","Vacuole","Cytoplasm only"],1],["Mitochondria help with:",["Energy release","Hearing","Bone shape","Blood colour"],0],["Cells working together form:",["Tissues","Planets","Equations","Only atoms"],0],["Specialized cells are useful because:",["They perform particular functions efficiently","They have no structure","They all do the same job","They cannot communicate"],0]]},
+ict:{s:"ICT",icon:"💻",t:"Algorithms & Problem Solving",c:"An algorithm is a clear sequence of steps for solving a problem or completing a task. Good algorithms have a defined goal, logical steps and decisions or repetition when needed. Breaking a large problem into smaller parts makes solutions easier to design and test.",k:"Think first, code second: a clear plan makes programming easier.",e:"An attendance system can follow: enter ID → check today's record → if present mark present → otherwise mark absent → save.",a:"Write an algorithm for making tea. Add one decision, such as what to do if the water is not hot enough.",q:[["An algorithm is:",["A random guess","A sequence of logical steps","Only a computer","A keyboard"],1],["Breaking a large problem into parts makes it:",["Easier to understand and test","Impossible","Always longer","Unsolvable"],0],["A decision can use:",["If/else logic","Only colour","Only sound","A password"],0],["A flowchart can:",["Visualize steps and decisions","Increase internet speed","Change hardware","Print books"],0],["A good algorithm should be:",["Ambiguous","Logical and clear","Impossible to test","Random"],1]]},
+english:{s:"English",icon:"🇬🇧",t:"Effective Communication",c:"Effective communication means expressing an idea clearly while considering the audience. A strong communicator chooses suitable words, organizes ideas logically, listens and responds to feedback. The same message may need a different style for a friend, a school report or a public presentation.",k:"Audience matters: communication is not only what you say, but how the listener or reader understands it.",e:"A science idea may need a simpler explanation for a ten-year-old and a more technical explanation for a university student.",a:"Explain one topic in two sentences for a ten-year-old, then explain it for a university student.",q:[["Effective communication needs:",["Clarity and audience awareness","The longest words","Speaking fastest","Ignoring feedback"],0],["Why does audience matter?",["People have different needs and knowledge","Everyone understands identically","It changes facts","It removes grammar"],0],["A school report usually needs:",["Organized, appropriate language","Only slang","No structure","Random ideas"],0],["Listening helps us:",["Understand and respond","Stop conversation","Avoid all feedback","Change facts"],0],["A good presentation has:",["A clear purpose and organized ideas","Only pictures","No conclusion","Unrelated examples"],0]]},
+bgs:{s:"Bangladesh & Global Studies",icon:"🌍",t:"Citizenship & Social Responsibility",c:"Citizenship includes rights, responsibilities and participation in society. Responsible citizens respect others, care for shared resources, follow laws and contribute to their communities. Social responsibility means recognizing how individual actions affect other people and the environment.",k:"Ask not only 'What are my rights?' but also 'What can I contribute?'",e:"Reducing waste at school, protecting shared spaces and responsibly reporting a community problem are small acts of civic responsibility.",a:"Identify one school/community problem. Suggest two actions a student can take and one action needing collective support.",q:[["Citizenship includes:",["Only rights","Rights and responsibilities","Only exams","Only voting"],1],["A responsible citizen should:",["Respect shared resources","Ignore problems","Break rules","Spread rumours"],0],["Social responsibility means:",["Considering how actions affect others","Doing everything alone","Avoiding participation","Only helping friends"],0],["A civic action is:",["Responsibly reporting a public problem","Damaging property","Spreading rumours","Ignoring safety"],0],["Communities need cooperation because:",["Many problems require collective action","One person solves everything","Rules disappear","Communication stops"],0]]}
 };
-
-const topics = {
- human:{title:"Human Behaviour",career:"Psychology & Mental Health",learn:"Human behaviour is shaped by interacting biological, psychological and social factors. Studying behaviour means asking careful questions, observing patterns and avoiding assumptions about individuals.",key:"A useful habit is to separate observation from interpretation: “What happened?” is different from “Why did it happen?”",example:"A student stops participating in class. Observation: participation decreased. Possible explanations could include confidence, classroom climate, workload, health, or many other factors.",activity:"Write one everyday behaviour you notice. List three different explanations without deciding which one is true.",source:["WHO — Mental health","https://www.who.int/health-topics/mental-health"],quiz:[
- ["Which is the best first step when interpreting a behaviour?","Make an assumption","Describe the observation carefully","Label the person","Ignore context",1],
- ["Human behaviour is best understood as…","Having one fixed cause","Only biology","A result of interacting factors","Always predictable",2],
- ["Why distinguish observation from interpretation?","To reduce unsupported conclusions","To make research slower","To avoid evidence","To prove one explanation",0],
- ["A student is quiet in class. Which is an observation?","They are shy","They dislike school","They spoke less today","They are anxious",2],
- ["Good behavioural inquiry should be…","Curious and evidence-aware","Certain immediately","Based on stereotypes","Free of questions"],0]
- },
- research:{title:"Research & Evidence",career:"Cross-career skill",learn:"Research is a structured way to answer questions using evidence. Strong research begins with a clear question, chooses an appropriate method, collects information carefully, and interprets limitations honestly.",key:"Correlation does not automatically mean causation. A relationship between two variables can have other explanations.",example:"If students who sleep more have higher grades, that does not by itself prove sleep caused the higher grades. Other factors may influence both.",activity:"Take a claim you see online. Write one question you would ask before believing it.",source:["OpenStax — Research Methods","https://openstax.org/subjects/social-sciences"],quiz:[
- ["What usually comes first in a research project?","A conclusion","A clear question","A graph","A press release",1],
- ["Correlation means…","One variable definitely causes another","Two variables are related in some way","The study is perfect","There is no relationship",1],
- ["Why report limitations?","To hide weaknesses","To make evidence more transparent","To avoid methods","To guarantee results",1],
- ["A good research question should be…","Specific enough to investigate","Impossible to test","Based only on opinion","Already answered",0],
- ["Which improves evidence quality?","Cherry-picking","Transparent methods","Ignoring contrary findings","Changing results"],1]
- },
- communication:{title:"Communication & Storytelling",career:"Media, Education & Impact",learn:"Effective communication starts with knowing the audience and purpose. Clear structure, examples, active listening and feedback can make complex ideas easier to understand.",key:"Good communication is not only speaking well. It includes listening, adapting and checking whether the message was understood.",example:"A science communicator may explain the same finding differently to a researcher, a school student and a general audience.",activity:"Explain one topic you know in two sentences for a 10-year-old. Then explain it for a university student.",source:["UNESCO — Media and Information Literacy","https://www.unesco.org/en/media-information-literacy"],quiz:[
- ["What should shape how you communicate?","Only your preferred style","Audience and purpose","The longest possible message","Jargon",1],
- ["Active listening includes…","Planning your reply while ignoring the speaker","Checking understanding","Interrupting","Assuming intent",1],
- ["Why use examples?","They can connect abstract ideas to familiar situations","They always prove a claim","They replace evidence","They make every topic simple",0],
- ["A good explanation is usually…","Clear and structured","As technical as possible","Unrelated to the audience","Long without headings",0],
- ["Feedback helps a communicator…","Understand how the message landed","Avoid revision","Guarantee agreement","Remove context"],0]
- },
- web:{title:"Web Development Basics",career:"Technology, AI & Data",learn:"The web combines structure, presentation and behaviour. HTML provides document structure, CSS controls presentation, and JavaScript adds dynamic behaviour and interaction.",key:"Think of a webpage as a system: structure first, presentation second, interaction third.",example:"A quiz can use HTML for questions and buttons, CSS for layout, and JavaScript to track answers, calculate a score and update the screen.",activity:"Open a simple webpage and identify three things that are structure, three that are visual design, and three that are interactions.",source:["MDN — Learn Web Development","https://developer.mozilla.org/en-US/docs/Learn_web_development"],quiz:[
- ["Which technology provides the structure of a webpage?","HTML","CSS","JavaScript","SQL",0],
- ["CSS is mainly used for…","Presentation and layout","Database storage","Server hardware","Writing research papers",0],
- ["JavaScript can…","Add interaction and dynamic behaviour","Only change fonts","Replace the internet","Create electricity",0],
- ["A good development workflow often starts with…","Clear requirements and structure","Random styling","Ignoring users","Deleting content",0],
- ["Why separate structure and presentation?","It improves maintainability and clarity","It makes sites impossible","It removes accessibility","It prevents interaction"],0]
- },
- ai:{title:"AI Literacy",career:"Technology, AI & Data",learn:"Artificial intelligence systems can identify patterns, generate content, classify information and assist with tasks. AI outputs still need human judgment, especially when accuracy, fairness or high-stakes decisions matter.",key:"AI can process patterns at scale; humans remain responsible for goals, context, judgment and consequences.",example:"A student can use an AI tool to brainstorm study questions, then verify the facts and rewrite the answer in their own words.",activity:"Choose one task you do weekly. Write what an AI system could assist with and what a human must still decide.",source:["IBM — What is Artificial Intelligence?","https://www.ibm.com/think/topics/artificial-intelligence"],quiz:[
- ["A key strength of many AI systems is…","Pattern processing at scale","Perfect judgment","Knowing every fact","Having human experience",0],
- ["Why should AI outputs be checked?","Outputs can be wrong or misleading","AI never produces useful results","Checking is illegal","It slows computers",0],
- ["Human oversight is especially important when…","Consequences are significant","The task is a joke","No one will use the output","There is no context",0],
- ["A responsible AI user should…","Verify important claims","Assume every output is true","Hide uncertainty","Remove all human judgment",0],
- ["AI literacy includes understanding…","Capabilities and limitations","Only prompts","Only coding","Only hardware"],0]
- },
- data:{title:"Data Literacy",career:"Technology, AI & Science",learn:"Data literacy means being able to read, question, interpret and communicate information represented as data. It includes understanding variables, samples, charts, uncertainty and context.",key:"A number without context can mislead. Always ask: compared with what, measured how, and for whom?",example:"A survey reports that 70% of students prefer a new learning app. You should ask how many students responded and how they were selected.",activity:"Find a chart online. Write down the title, population/sample, units and one question the chart does not answer.",source:["OpenStax — Statistics","https://openstax.org/subjects/math"],quiz:[
- ["What is a sample?","A subset used to learn about a larger population","A graph","A conclusion","A database password",0],
- ["Why does context matter for a percentage?","It tells us what the percentage refers to","Percentages are never useful","It changes arithmetic","It removes bias automatically",0],
- ["A chart should have…","Clear labels and context","No title","Hidden units","Random scales",0],
- ["What can a biased sample affect?","How well results represent the population","Only font size","Nothing","Computer speed",0],
- ["Data literacy includes…","Questioning how data were collected","Memorizing every number","Avoiding uncertainty","Trusting every chart"],0]
- },
- learning:{title:"How People Learn",career:"Education & Learning",learn:"Learning improves when learners actively retrieve ideas, connect new knowledge to what they already know, practise over time and receive useful feedback. Different learners may benefit from different strategies and environments.",key:"Active recall and spaced practice are often more useful for durable learning than simply rereading notes.",example:"Instead of rereading a chapter five times, a learner can close the book, answer questions from memory, then revisit the material later.",activity:"Turn one chapter into five questions. Try answering them tomorrow without looking at your notes.",source:["OpenStax — Psychology","https://openstax.org/subjects/social-sciences"],quiz:[
- ["Active recall means…","Trying to retrieve information from memory","Reading the same page repeatedly","Highlighting everything","Avoiding practice",0],
- ["Spaced practice means…","Distributing study over time","Studying only the night before","Skipping revision","Reading faster",0],
- ["Feedback is useful when it…","Shows what to improve and how","Only gives a score","Embarrasses learners","Arrives years later",0],
- ["Connecting new ideas to prior knowledge can…","Support understanding","Prevent learning","Remove curiosity","Guarantee perfect memory",0],
- ["A useful study plan should include…","Practice and review","Only passive reading","No breaks","No goals"],0]
- },
- sdg:{title:"Sustainable Development & SDGs",career:"Social Impact & Development",learn:"The Sustainable Development Goals are a shared framework covering social, economic and environmental challenges. Understanding a problem requires looking at people, systems, resources and trade-offs.",key:"Social problems rarely have one cause. Systems thinking helps connect individuals, institutions, incentives and environments.",example:"Improving school attendance may involve transport, safety, family income, teaching quality, health and community expectations—not just motivation.",activity:"Choose one local issue. Map three causes, three stakeholders and one possible intervention.",source:["United Nations — Sustainable Development Goals","https://sdgs.un.org/goals"],quiz:[
- ["The SDGs address…","A range of interconnected global challenges","Only technology","Only education","Only climate",0],
- ["Systems thinking asks us to consider…","Connections and interactions","One cause only","No stakeholders","Only individual choices",0],
- ["A stakeholder is…","A person/group affected by or able to affect an issue","Only a government","Only a customer","A statistic",0],
- ["A good intervention should consider…","Context and possible trade-offs","Only good intentions","No evidence","Only one viewpoint",0],
- ["Community problems are often…","Multi-causal","Always simple","Solved by one person","Independent of systems"],0]
- },
- design:{title:"Design Thinking",career:"Creative & Digital Work",learn:"Design thinking is a human-centred approach to solving problems. It encourages understanding users, defining a meaningful problem, generating ideas, prototyping and testing.",key:"A prototype is not the final product. It is a way to learn quickly from feedback.",example:"Before building a full learning app, a team can sketch the screens on paper and ask students to try the flow.",activity:"Pick a problem students face. Sketch a three-screen solution on paper and identify what you need to test.",source:["IDEO Design Thinking resources","https://designthinking.ideo.com/"],quiz:[
- ["A prototype is mainly used to…","Learn and test ideas","Prove perfection","Avoid users","Replace research",0],
- ["Human-centred design starts with…","Understanding people and their needs","Choosing colours","Writing code immediately","Selling the product",0],
- ["Testing a prototype can reveal…","Usability problems and new insights","Only success","Nothing useful","The final answer",0],
- ["Ideation is about…","Generating possible solutions","Rejecting every idea","Coding servers","Writing a report",0],
- ["Good design balances…","User needs, constraints and goals","Only aesthetics","Only speed","Only cost"],0]
- },
- digital:{title:"Digital Media Literacy",career:"Media & Communication",learn:"Digital media literacy involves evaluating online information, understanding how media is produced and distributed, and communicating responsibly in digital environments.",key:"Before sharing a claim, check the source, evidence, date, context and whether other credible sources agree.",example:"A viral post may use a real image with a misleading caption. Reverse-checking the context can change the interpretation.",activity:"Take one viral claim and write five verification questions before sharing it.",source:["UNESCO — Media and Information Literacy","https://www.unesco.org/en/media-information-literacy"],quiz:[
- ["Media literacy helps you…","Evaluate and create information responsibly","Believe viral posts","Avoid all media","Only edit videos",0],
- ["Before sharing a claim, you should check…","Source and evidence","Only the number of likes","The font","Whether friends agree",0],
- ["Context can change…","How a message should be interpreted","The internet speed","A password","Nothing",0],
- ["A credible source should be evaluated for…","Evidence, expertise and relevance","Popularity alone","Length alone","Colour",0],
- ["Responsible digital communication includes…","Thinking about accuracy and impact","Sharing immediately","Hiding uncertainty","Using misleading headlines"],0]
- },
- experiment:{title:"Scientific Experimentation",career:"Science & Research",learn:"Scientific investigation uses questions, hypotheses, methods and evidence. A useful experiment controls relevant variables where possible and records observations systematically.",key:"A hypothesis is a testable explanation or prediction—not a statement that has already been proven.",example:"To test whether light affects plant growth, you could compare groups while keeping other conditions as similar as practical.",activity:"Design a simple test: write a question, a hypothesis, the variable you change, and what you measure.",source:["NASA — Science resources","https://science.nasa.gov/"],quiz:[
- ["A hypothesis is…","A testable explanation or prediction","A proven fact","A random guess with no test","A conclusion before evidence",0],
- ["Why control variables?","To make comparisons more meaningful","To guarantee the hypothesis","To remove measurement","To avoid data",0],
- ["A measurement should be…","Defined clearly enough to record consistently","Changed randomly","Hidden","Based only on opinion",0],
- ["Repeating a procedure can help…","Assess consistency of results","Guarantee truth","Remove all uncertainty","Avoid documentation",0],
- ["A scientific conclusion should be based on…","Evidence and limitations","Expectation alone","Popularity","A single anecdote"],0]
- }
-};
-
-let state={name:"",edu:"",qi:0,answers:Array(questions.length).fill(null).map(()=>[]),scores:{},selectedCareer:"psychology",selectedTopic:"human",topicScores:{},completedTopics:[],xp:0};
-
-function save(){localStorage.setItem("futurefindState",JSON.stringify(state))}
-function load(){
- try{const x=JSON.parse(localStorage.getItem("futurefindState"));if(x) state={...state,...x}}catch(e){}
-}
-function go(id){
- document.querySelectorAll(".view").forEach(v=>v.classList.add("hidden"));
- const el=document.getElementById(id); if(el) el.classList.remove("hidden");
- window.scrollTo({top:0,behavior:"smooth"});
- if(id==="mindmap") renderMindmap();
- if(id==="lab") renderLab();
- if(id==="roadmap") renderRoadmap();
-}
-function startDiscovery(){
- state.qi=0;state.answers=Array(questions.length).fill(null).map(()=>[]);
- document.getElementById("nameInput").value=state.name||"";
- document.getElementById("eduInput").value=state.edu||"University";
- go("discover");showProfile();
-}
-function showProfile(){
- document.getElementById("profileStep").classList.remove("hidden");
- document.getElementById("quizStep").classList.add("hidden");
- updateProgress(0,"About you");
-}
-function beginQuiz(){
- state.name=document.getElementById("nameInput").value.trim()||"Future Explorer";
- state.edu=document.getElementById("eduInput").value;
- document.getElementById("profileStep").classList.add("hidden");
- document.getElementById("quizStep").classList.remove("hidden");
- renderQuestion();save();
-}
-function updateProgress(n,label){
- document.getElementById("progressText").textContent=`${Math.min(n+1,10)} / 10`;
- document.getElementById("progressLabel").textContent=label;
- document.getElementById("progressBar").style.width=(Math.min(n+1,10)*10)+"%";
-}
-function renderQuestion(){
- const q=questions[state.qi];
- updateProgress(state.qi,"Career Discovery");
- document.getElementById("qNum").textContent=`QUESTION ${String(state.qi+1).padStart(2,"0")}`;
- document.getElementById("questionText").textContent=q.q;
- const wrap=document.getElementById("options");wrap.innerHTML="";
- q.o.forEach((x,i)=>{
-  const b=document.createElement("button");b.className="option"+(state.answers[state.qi].includes(i)?" selected":"");
-  b.innerHTML=`${x[0]} ${x[1]}<small>${x[2]}</small>`;
-  b.onclick=()=>toggleAnswer(i);wrap.appendChild(b);
- });
- document.getElementById("nextBtn").textContent=state.qi===questions.length-1?"See my results →":"Next →";
-}
-function toggleAnswer(i){
- const a=state.answers[state.qi]; const idx=a.indexOf(i);
- if(idx>=0)a.splice(idx,1); else {if(a.length>=2)a.shift();a.push(i)}
- document.getElementById("selectionNotice").classList.add("hidden");
- renderQuestion();save();
-}
-function nextQuestion(){
- if(!state.answers[state.qi].length){document.getElementById("selectionNotice").classList.remove("hidden");return}
- if(state.qi<questions.length-1){state.qi++;renderQuestion();save()}
- else calculateResults();
-}
-function prevQuestion(){
- if(state.qi===0){showProfile();return}
- state.qi--;renderQuestion()
-}
-function resetToQuestion(n){
- state.qi=n;document.getElementById("profileStep").classList.add("hidden");document.getElementById("quizStep").classList.remove("hidden");renderQuestion()
-}
-function calculateResults(){
- const s={psychology:0,technology:0,education:0,social:0,media:0,science:0};
- state.answers.forEach((arr,qi)=>arr.forEach(i=>{
-  const label=questions[qi].o[i][1].toLowerCase();
-  if(/people|behaviour|empathy|health/.test(label))s.psychology+=2;
-  if(/technology|ai|coding|digital|data|problem|build/.test(label))s.technology+=2;
-  if(/teach|learning|education|school/.test(label))s.education+=2;
-  if(/community|impact|social|system|sustain/.test(label))s.social+=2;
-  if(/creative|express|media|story|communication/.test(label))s.media+=2;
-  if(/experiment|evidence|science|research|testing|pattern/.test(label))s.science+=2;
- }));
- // Add small balance based on explicit preference choices
- const last=state.answers[9]||[];
- last.forEach(i=>{if(i===0)s.psychology++;if(i===1)s.technology++;if(i===2)s.social++;if(i===3){s.technology++;s.media++}});
- state.scores=s;
- const sorted=Object.entries(s).sort((a,b)=>b[1]-a[1]);
- state.selectedCareer=sorted[0][0];
- renderResults(sorted);save();go("results");
-}
-function renderResults(sorted){
- const total=Math.max(...sorted.map(x=>x[1]),1);
- document.getElementById("resultTitle").textContent=`${state.name || "Future Explorer"}, here are your strongest directions`;
- document.getElementById("resultIntro").textContent="Your answers are signals for exploration, not a fixed prediction. Use these matches to decide what you want to learn and test next.";
- const sg=document.getElementById("scoreGrid");sg.innerHTML="";
- [["Problem solving","🧩"],["Creativity","✨"],["Communication","🗣️"],["Impact","🌍"]].forEach((x,j)=>{
-  const val=Math.min(96,58+((sorted[j%sorted.length][1]*7)%36));
-  sg.innerHTML+=`<div class="score"><span>${x[1]} ${x[0]}</span><b>${val}%</b></div>`
- });
- const grid=document.getElementById("careerGrid");grid.innerHTML="";
- sorted.slice(0,4).forEach((it,idx)=>{
-  const c=careers[it[0]];const match=Math.min(96,Math.round(62+(it[1]/Math.max(total,1))*34));
-  grid.innerHTML+=`<article class="career"><div class="rank">#${idx+1} · TOP MATCH</div><div class="match">${match}%</div><h3>${c.icon} ${c.name}</h3><p>${c.desc}</p><div class="tags">${c.skills.map(s=>`<span class="tag">${s}</span>`).join("")}</div><p class="small"><b>Why it matches:</b> ${c.why}</p><div class="career-actions"><button class="btn primary" onclick="selectCareer('${it[0]}')">Explore career →</button></div></article>`;
- });
-}
-function selectCareer(k){state.selectedCareer=k;save();go("mindmap")}
-function renderMindmap(){
- const c=careers[state.selectedCareer]||careers.psychology;
- document.getElementById("mapTitle").textContent=`${c.icon} ${c.name} — Future Map`;
- document.getElementById("mapIntro").textContent=c.desc+" Follow the connected topics to build a foundation.";
- const tabs=document.getElementById("careerTabs");tabs.innerHTML="";
- Object.entries(careers).forEach(([k,v])=>{
-  const b=document.createElement("button");b.className="tab"+(k===state.selectedCareer?" active":"");b.textContent=v.icon+" "+v.name.split(" & ")[0];
-  b.onclick=()=>{state.selectedCareer=k;save();renderMindmap();renderLab()};tabs.appendChild(b)
- });
- const core=c.topics.map(t=>topics[t]).filter(Boolean);
- const left=core.slice(0,Math.ceil(core.length/2)),right=core.slice(Math.ceil(core.length/2));
- document.getElementById("mindmapContent").innerHTML=`<div class="mcol">${left.map(t=>`<button class="mnode clickable" onclick="openTopic('${Object.keys(topics).find(k=>topics[k]===t)}')">📌 ${t.title}</button>`).join("")}</div><div class="mcenter">${c.icon}<br>${c.name}<div class="small" style="color:var(--muted);margin-top:8px">Choose a node to learn</div></div><div class="mcol">${right.map(t=>`<button class="mnode clickable" onclick="openTopic('${Object.keys(topics).find(k=>topics[k]===t)}')">📚 ${t.title}</button>`).join("")}</div>`;
-}
-function openTopic(k){state.selectedTopic=k;save();go("lab")}
-function renderLab(){
- const c=careers[state.selectedCareer]||careers.psychology;
- document.getElementById("labIntro").textContent=`${c.name}: learn through short lessons, examples, activities and 5-question topic quizzes.`;
- const tabs=document.getElementById("topicTabs");tabs.innerHTML="";
- c.topics.forEach(k=>{
-  const t=topics[k];if(!t)return;
-  const b=document.createElement("button");b.className="tab"+(k===state.selectedTopic?" active":"");b.textContent=t.title;
-  b.onclick=()=>{state.selectedTopic=k;save();renderLab()};tabs.appendChild(b)
- });
- if(!c.topics.includes(state.selectedTopic))state.selectedTopic=c.topics[0];
- const t=topics[state.selectedTopic]; if(!t)return;
- const done=state.completedTopics.includes(state.selectedTopic);
- document.getElementById("lessonArea").innerHTML=`
- <div class="lesson">
-  <article class="lesson-main">
-   <div class="rank">MICRO-LESSON</div><h2>${t.title}</h2>
-   <p>${t.learn}</p>
-   <div class="key"><b>💡 Key idea</b><br>${t.key}</div>
-   <h3 style="margin-top:22px">🌍 Real-world example</h3><p>${t.example}</p>
-   <h3>✍️ Try it</h3><p>${t.activity}</p>
-   <h3>🔗 Further learning</h3>${(Array.isArray(t.source[0]) ? t.source : [t.source]).map(s=>`<a class="source" href="${s[1]}" target="_blank" rel="noopener noreferrer">↗ ${s[0]}</a>`).join("")}
-  </article>
-  <aside class="lesson-side">
-   <h3>Topic progress</h3><p>${done?"✅ Completed":"Not completed yet"}</p>
-   <div class="progress"><div style="width:${done?100:0}%"></div></div>
-   <p class="small" style="margin-top:18px">Complete all 5 questions to earn <b>+100 XP</b>.</p>
-  </aside>
- </div>
- <div class="panel quizcard" style="padding:20px;background:#fafaff">
-  <div class="rank">TOPIC QUIZ · 5 QUESTIONS</div>
-  <h2 style="font-size:26px">Check your understanding</h2>
-  <div id="topicQuiz"></div>
- </div>`;
- renderTopicQuiz(t);
-}
-function renderTopicQuiz(t){
- const wrap=document.getElementById("topicQuiz");
- const key="quiz_"+state.selectedTopic;
- if(!state.topicScores[key])state.topicScores[key]={answers:Array(5).fill(null),submitted:false,score:0};
- const qs=state.topicScores[key];
- wrap.innerHTML=t.quiz.map((q,i)=>{
-  const picked=qs.answers[i];
-  return `<div style="padding:18px 0;border-top:1px solid var(--line)"><b>${i+1}. ${q[0]}</b><div class="optiongrid" style="margin-top:10px">${q.slice(1,5).map((opt,j)=>`<button class="option ${picked===j?"selected":""}" onclick="answerTopic(${i},${j})">${String.fromCharCode(65+j)}. ${opt}</button>`).join("")}</div>${qs.submitted?`<div class="feedback ${picked===q[5]?"good":"bad"}">${picked===q[5]?"✓ Correct":"✗ Not quite"}${picked!==q[5]?` — Correct answer: ${String.fromCharCode(65+q[5])}`:""}</div>`:""}</div>`
- }).join("")+`<div class="hero-actions"><button class="btn primary" onclick="submitTopicQuiz()">Submit quiz →</button>${qs.submitted?`<button class="btn secondary" onclick="resetTopicQuiz()">Try again</button>`:""}</div>`;
-}
-function answerTopic(i,j){
- const key="quiz_"+state.selectedTopic;if(!state.topicScores[key])state.topicScores[key]={answers:Array(5).fill(null),submitted:false,score:0};
- if(state.topicScores[key].submitted)return;
- state.topicScores[key].answers[i]=j;save();renderLab();
-}
-function submitTopicQuiz(){
- const t=topics[state.selectedTopic],key="quiz_"+state.selectedTopic,qs=state.topicScores[key];
- if(qs.answers.some(x=>x===null)){toast("Answer all 5 questions first.");return}
- qs.score=t.quiz.reduce((n,q,i)=>n+(qs.answers[i]===q[5]?1:0),0);qs.submitted=true;
- if(qs.score>=3 && !state.completedTopics.includes(state.selectedTopic)){state.completedTopics.push(state.selectedTopic);state.xp+=100;toast("+100 XP! Topic completed 🎉")}
- save();renderLab();
-}
-function resetTopicQuiz(){const key="quiz_"+state.selectedTopic;state.topicScores[key]={answers:Array(5).fill(null),submitted:false,score:0};save();renderLab()}
-function renderRoadmap(){
- const c=careers[state.selectedCareer]||careers.psychology;
- document.getElementById("roadmapTitle").textContent=`${c.icon} Your ${c.name} roadmap`;
- const steps=[
-  ["MONTH 1","Explore","Complete 3–4 Study Lab topics. Keep a curiosity journal and identify which sub-area you enjoy."],
-  ["MONTH 2","Build foundations","Practise the core skills: "+c.skills.slice(0,3).join(", ")+". Create small notes or exercises."],
-  ["MONTH 3","Practice","Complete one mini-project related to "+c.name+". Ask a teacher, mentor or peer for feedback."],
-  ["MONTH 4","Get experience","Join a club, competition, volunteer activity, workshop, research task or internship where possible."],
-  ["MONTH 5","Build your portfolio","Document 2–3 projects, what you learned, evidence of work and reflections."],
-  ["MONTH 6","Choose your next step","Compare university courses, certifications, internships or advanced learning paths and make a realistic plan."]
- ];
- document.getElementById("roadmapGrid").innerHTML=steps.map(s=>`<div class="step"><div class="month">${s[0]}</div><h3>${s[1]}</h3><p class="small">${s[2]}</p></div>`).join("");
- const done=state.completedTopics.length;const pct=Math.min(100,done*20);
- document.getElementById("xpText").textContent=`${state.xp} XP · ${done} topics completed`;
- document.getElementById("xpBar").style.width=pct+"%";
- const badges=[
-  ["🔎","Career Explorer",Object.keys(state.scores||{}).length>0],
-  ["🧪","Study Starter",done>=1],
-  ["🧠","Knowledge Builder",done>=3],
-  ["🚀","Future Builder",done>=5]
- ];
- document.getElementById("badges").innerHTML=badges.map(b=>`<div class="badge" style="opacity:${b[2]?1:.42}"><div class="emoji">${b[0]}</div><b>${b[1]}</b><div class="small muted">${b[2]?"Unlocked":"Locked"}</div></div>`).join("");
-}
-function printReport(){
- renderRoadmap();
- const old=document.title;document.title="FutureFind — My Future Report";
- window.print();document.title=old;
-}
-function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.remove("hidden");setTimeout(()=>t.classList.add("hidden"),2300)}
-load();
-if(state.name){} 
+let st={name:"Student",cls:"9",scores:{},xp:0};let current="";let picked=[];
+try{let x=JSON.parse(localStorage.getItem("futurefind9_10"));if(x)st={...st,...x}}catch(e){}
+function save(){localStorage.setItem("futurefind9_10",JSON.stringify(st))}
+function show(id){document.querySelectorAll(".screen").forEach(x=>x.classList.add("hidden"));document.getElementById(id).classList.remove("hidden");scrollTo(0,0)}
+function start(){show("start")}
+function begin(){st.name=document.getElementById("name").value.trim()||"Student";st.cls=document.getElementById("cls").value;save();show("subjects")}
+function renderSubjects(){document.getElementById("subjectGrid").innerHTML=Object.entries(data).map(([id,x])=>`<div class="card" style="cursor:pointer" onclick="openTopic('${id}')"><div class="icon">${x.icon}</div><span class="tag">Class 9–10</span><h3>${x.s}</h3><p>${x.t}</p><b>Explore topic →</b></div>`).join("")}
+function openTopic(id){current=id;let x=data[id];document.getElementById("lessonBox").innerHTML=`<span class="tag">${x.s.toUpperCase()} • CLASS 9–10</span><h2>${x.t}</h2><p class="lesson">${x.c}</p><div class="note"><b>💡 Key idea:</b> ${x.k}</div><h3>🌍 Real-life connection</h3><p>${x.e}</p><div class="activity"><b>🧪 Try it:</b> ${x.a}</div><h3>🚀 Career connection</h3><p>This topic develops transferable skills. Your performance across several subjects is more useful for career exploration than a single quiz result.</p><div class="row"><button class="secondary" onclick="show('subjects')">← Subjects</button><button class="primary" onclick="quiz()">Take 5-question quiz →</button></div>`;show("lesson")}
+function quiz(){let x=data[current];picked=[];document.getElementById("quizTitle").textContent=x.t;document.getElementById("quizBox").innerHTML=x.q.map((q,i)=>`<div class="quiz"><b>${i+1}. ${q[0]}</b>${q[1].map((o,j)=>`<button class="opt" id="o${i}_${j}" onclick="pick(${i},${j})">${String.fromCharCode(65+j)}. ${o}</button>`).join("")}</div>`).join("");show("quiz")}
+function pick(i,j){picked[i]=j;document.querySelectorAll(`[id^="o${i}_"]`).forEach(b=>b.classList.remove("sel"));document.getElementById(`o${i}_${j}`).classList.add("sel")}
+function submitQuiz(){let q=data[current].q,s=0;q.forEach((z,i)=>{if(picked[i]===z[2])s++});st.scores[current]=Math.max(st.scores[current]||0,s);st.xp+=(s*10);save();alert(`Score: ${s}/5 • +${s*10} XP`);profile()}
+function profile(){let n=Object.keys(st.scores).length,total=Object.values(st.scores).reduce((a,b)=>a+b,0),pct=n?Math.round(total/(n*5)*100):0;document.getElementById("hello").textContent=`${st.name}, your learning profile`;document.getElementById("summary").textContent=n?`You have completed ${n} topic quiz${n>1?"zes":""} and earned ${st.xp} XP. Explore more subjects before making a career decision.`:"Complete topic quizzes to start building your learning profile.";let vals={math:st.scores.math||0,science:st.scores.science||0,biology:st.scores.biology||0,ict:st.scores.ict||0,english:st.scores.english||0,bgs:st.scores.bgs||0};let skills=[["Analytical thinking",Math.round(((vals.math+vals.ict)/10)*100)],["Scientific thinking",Math.round(((vals.science+vals.biology)/10)*100)],["Communication",vals.english*20],["Social awareness",vals.bgs*20]];document.getElementById("strengths").innerHTML=skills.map(s=>`<p><b>${s[0]}</b> — ${s[1]}%</p><div class="bar"><i style="width:${s[1]}%"></i></div>`).join("");let cs=[["🔬 Science & Research",Math.round((vals.science+vals.biology)/10*100)],["💻 Technology & Engineering",Math.round((vals.math+vals.ict)/10*100)],["👩‍🏫 Education & Communication",vals.english*20],["🌍 Social Impact & Public Service",vals.bgs*20]].sort((a,b)=>b[1]-a[1]);document.getElementById("careers").innerHTML=cs.map(c=>`<p><b>${c[0]}</b> — ${c[1]}%</p><div class="bar"><i style="width:${c[1]}%"></i></div>`).join("");document.getElementById("map").innerHTML=`<p>📚 Class ${st.cls} learning</p><p>↓</p><p><b>${cs[0][0]}</b></p><p>↓</p><p>Learn → Practice → Project → Explore study pathways → Make an informed choice</p>`;show("profile")}
+function roadmap(){let m=[["Month 1","Explore","Try 3 topics from different subjects."],["Month 2","Strengthen","Revisit weak concepts and practise."],["Month 3","Connect","Do one real-life activity."],["Month 4","Create","Make a mini project/presentation."],["Month 5","Reflect","Compare interest and learning performance."],["Month 6","Plan","Explore study and career pathways."]];document.getElementById("road").innerHTML=m.map(x=>`<div class="month"><strong>${x[0]}</strong><h3>${x[1]}</h3><p>${x[2]}</p></div>`).join("");show("roadmap")}
+renderSubjects();
 </script>
 </body>
 </html>
