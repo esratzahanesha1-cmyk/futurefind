@@ -55,7 +55,7 @@ footer{text-align:center;color:var(--muted);padding:35px;font-size:13px}
 <section id="subjects" class="screen hidden"><div class="panel"><span class="tag">CLASS 9–10</span><h2>Choose a subject</h2><p>Start with a topic. The same structure can later contain the full textbook.</p><div id="subjectGrid" class="grid"></div></div></section>
 
 <section id="lesson" class="screen hidden"><div id="lessonBox" class="panel"></div></section>
-<section id="quiz" class="screen hidden"><div class="panel"><span class="tag">5-QUESTION QUIZ</span><h2 id="quizTitle"></h2><div id="quizBox"></div><div class="row"><button class="secondary" onclick="lesson()">← Back</button><button class="primary" onclick="submitQuiz()">Submit Quiz</button></div></div></section>
+<section id="quiz" class="screen hidden"><div class="panel"><span class="tag">5-QUESTION QUIZ</span><h2 id="quizTitle"></h2><div id="quizBox"></div><div class="row"><button class="secondary" onclick="openTopic(current)">← Back</button><button class="primary" onclick="submitQuiz()">Submit Quiz</button></div></div></section>
 
 <section id="profile" class="screen hidden">
 <div class="panel"><span class="tag">MY LEARNING DASHBOARD</span><h2 id="hello"></h2>
@@ -93,7 +93,7 @@ function show(id){document.querySelectorAll(".screen").forEach(x=>x.classList.ad
 function start(){show("start")}
 function begin(){st.name=document.getElementById("name").value.trim()||"Student";st.cls=document.getElementById("cls").value;save();show("subjects")}
 function renderSubjects(){document.getElementById("subjectGrid").innerHTML=Object.entries(data).map(([id,x])=>`<div class="card" style="cursor:pointer" onclick="openTopic('${id}')"><div class="icon">${x.icon}</div><span class="tag">Class 9–10</span><h3>${x.s}</h3><p>${x.t}</p><b>Explore topic →</b></div>`).join("")}
-function openTopic(id){current=id;let x=data[id];document.getElementById("lessonBox").innerHTML=`<span class="tag">${x.s.toUpperCase()} • CLASS 9–10</span><h2>${x.t}</h2><p class="lesson">${x.c}</p><div class="note"><b>💡 Key idea:</b> ${x.k}</div><h3>🌍 Real-life connection</h3><p>${x.e}</p><div class="activity"><b>🧪 Try it:</b> ${x.a}</div><h3>🔗 Connect the Concept</h3><p>See how this concept connects with everyday life, other school subjects and practical problem-solving.</p><h3>🔗 Connect the Concept</h3><p>This topic connects with everyday life, other school subjects and practical problem-solving.</p>
+function openTopic(id){current=id;let x=data[id];document.getElementById("lessonBox").innerHTML=`<span class="tag">${x.s.toUpperCase()} • CLASS 9–10</span><h2>${x.t}</h2><p class="lesson">${x.c}</p><div class="note"><b>💡 Key idea:</b> ${x.k}</div><h3>🌍 Real-life connection</h3><p>${x.e}</p><div class="activity"><b>🧪 Try it:</b> ${x.a}</div><h3>🔗 Connect the Concept</h3><p>This topic connects with everyday life, other school subjects and practical problem-solving.</p>
 <div class="tabs"><button class="tab active" onclick="showLearnMode('simple')">🧒 Simple</button><button class="tab" onclick="showLearnMode('example')">🌍 Example</button><button class="tab" onclick="showLearnMode('steps')">🪜 Step-by-step</button></div>
 <div id="learnMode" class="explainGrid"></div><h3>🗺️ Chapter Mind Map</h3><div id="mindMap" class="mindmap"></div><h3>🎯 Learning Mission</h3><div id="missionBox"></div>
 <div class="alertbox">💡 <b>Still confused?</b> Try a different explanation mode before taking the quiz.</div><div class="row"><button class="secondary" onclick="show('subjects')">← Subjects</button><button class="primary" onclick="quiz()">Take 5-question quiz →</button></div>`;show("lesson");showLearnMode("simple");buildMindMap();buildMission()}
@@ -109,14 +109,14 @@ msg+=`<div class="alertbox"><b>🕵️ Mistake Detective</b><br>You missed ${wro
 msg+=wrong.map(i=>`<div class="card" style="margin:10px 0"><b>Question ${i+1}</b><p>${q[i][0]}</p><p>Correct answer: <b>${q[i][1][q[i][2]]}</b></p><p>💡 Tip: Review the lesson's key idea and try a similar question.</p></div>`).join("");
 }
 document.getElementById("quizBox").insertAdjacentHTML("afterbegin",msg);
-document.querySelector("#quiz .actions").innerHTML=`<button class="secondary" onclick="lesson()">← Review Lesson</button><button class="primary" onclick="revision()">🔄 Add to Revision</button>`;
+document.getElementById("quizBox").insertAdjacentHTML("beforeend",`<div class="row"><button class="secondary" onclick="openTopic(current)">← Review Lesson</button><button class="primary" onclick="profile()">📊 View Dashboard</button></div>`);
 }
 function profile(){
 let n=Object.keys(st.scores).length;
 let total=Object.values(st.scores).reduce((a,b)=>a+b,0);
 let pct=n?Math.round(total/(n*5)*100):0;
 document.getElementById("hello").textContent=`${st.name}, here is your learning dashboard`;
-document.getElementById("summary").textContent=n?`You have completed ${n} topic${n>1?"s":"} and earned ${st.xp} XP. Keep practising and revisiting concepts to strengthen your learning.`:"Complete topic quizzes to start building your learning dashboard.";
+document.getElementById("summary").textContent=n?`You have completed ${n} topic${n>1?"s":""} and earned ${st.xp} XP. Keep practising and revisiting concepts to strengthen your learning.`:"Complete topic quizzes to start building your learning dashboard.";
 document.getElementById("stats").innerHTML=
 `<div class="card"><h3>📚 Topics completed</h3><h2>${n}</h2></div>
 <div class="card"><h3>⭐ Total XP</h3><h2>${st.xp}</h2></div>
