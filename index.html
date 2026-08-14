@@ -20,23 +20,32 @@ nav button,.ghost{border:0;background:transparent;color:var(--muted);padding:9px
 .road{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.month{padding:17px;border:1px solid var(--line);border-radius:15px}.month strong{color:var(--p)}
 footer{text-align:center;color:var(--muted);padding:35px;font-size:13px}
 @media(max-width:760px){.grid,.grid2,.road{grid-template-columns:1fr}.choices{grid-template-columns:1fr}.hero{padding:30px 22px}nav{display:none}}
+
+.mindmap{display:grid;place-items:center;gap:10px;padding:15px;background:#f8f9ff;border-radius:18px}
+.mapnode{background:white;border:1px solid var(--line);border-radius:13px;padding:12px 16px;text-align:center;box-shadow:0 5px 15px #24335b0b;min-width:160px}
+.mapline{color:var(--p);font-weight:900}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.tab{padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:white}.tab.active{background:#eef0ff;border-color:var(--p);color:var(--p);font-weight:800}
+.explainGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.explain{padding:14px;border:1px solid var(--line);border-radius:13px;background:#fff}
+.mission{display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--line);border-radius:13px;margin:9px 0;background:#fff}.mission.done{background:#effaf5;border-color:#a8dfc8}.mission input{width:auto;margin:0}
+.alertbox{padding:15px;border-radius:13px;background:#fff7e9;border-left:4px solid #e5a23a;margin:14px 0}
+@media(max-width:760px){.explainGrid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
 <header class="nav"><div class="logo"><b>F</b>FutureFind</div><nav>
-<button onclick="show('home')">Home</button><button onclick="show('subjects')">Learn</button><button onclick="profile()">My Profile</button><button onclick="roadmap()">Roadmap</button>
+<button onclick="show('home')">Home</button><button onclick="show('subjects')">Learn</button><button onclick="profile()">My Dashboard</button><button onclick="roadmap()">Study Plan</button>
 </nav></header>
 
 <section id="home" class="screen">
 <div class="hero"><span class="tag">FOR CLASS 9–10</span>
-<h1>Learn today.<br>Discover your future.</h1>
-<p>FutureFind connects Class 9–10 learning with real-life skills and career exploration. Learn a concept, practise it, discover your strengths, and explore where your learning can lead.</p>
+<h1>Learn better.<br>Understand deeper.</h1>
+<p>FutureFind is an interactive learning platform for Class 9–10 students. Learn a concept, practise it, test your understanding, and track your learning progress.</p>
 <div class="row"><button class="primary" onclick="start()">🚀 Start Learning Journey</button><button class="secondary" onclick="show('subjects')">📚 Explore Subjects</button></div></div>
 <div class="grid">
 <div class="card"><div class="icon">📚</div><h3>Learn</h3><p>Curriculum-aligned concepts explained in simple language.</p></div>
 <div class="card"><div class="icon">🧠</div><h3>Practice</h3><p>Activities and quizzes check real understanding.</p></div>
-<div class="card"><div class="icon">🚀</div><h3>Connect to Careers</h3><p>See how subjects and skills connect to future pathways.</p></div>
+<div class="card"><div class="icon">🎯</div><h3>Track Your Learning</h3><p>See your quiz performance, XP, completed topics and learning progress.</p></div>
 </div></section>
 
 <section id="start" class="screen hidden"><div class="panel"><span class="tag">GET STARTED</span><h2>Tell us about you</h2>
@@ -48,12 +57,24 @@ footer{text-align:center;color:var(--muted);padding:35px;font-size:13px}
 <section id="lesson" class="screen hidden"><div id="lessonBox" class="panel"></div></section>
 <section id="quiz" class="screen hidden"><div class="panel"><span class="tag">5-QUESTION QUIZ</span><h2 id="quizTitle"></h2><div id="quizBox"></div><div class="row"><button class="secondary" onclick="lesson()">← Back</button><button class="primary" onclick="submitQuiz()">Submit Quiz</button></div></div></section>
 
-<section id="profile" class="screen hidden"><div class="panel"><span class="tag">YOUR LEARNING PROFILE</span><h2 id="hello"></h2><p id="summary"></p><div id="strengths"></div></div>
-<div class="grid2"><div class="card"><h3>🧭 Career pathways to explore</h3><div id="careers"></div></div><div class="card"><h3>🗺️ Future Map</h3><div id="map"></div></div></div></section>
+<section id="profile" class="screen hidden">
+<div class="panel"><span class="tag">MY LEARNING DASHBOARD</span><h2 id="hello"></h2>
+<p id="summary"></p>
+<div id="stats" class="grid2"></div><div class="row"><button class="primary" onclick="revision()">🔄 Smart Revision</button><button class="secondary" onclick="examRescue()">🚨 Exam Rescue</button><button class="secondary" onclick="show('subjects')">📚 Continue Learning</button></div><div id="dashboardTool"></div>
+</div>
+<div class="grid2">
+<div class="card"><h3>📊 Subject Progress</h3><div id="strengths"></div></div>
+<div class="card"><h3>🏆 Learning Achievements</h3><div id="achievements"></div></div>
+</div>
+</section>
 
-<section id="roadmap" class="screen hidden"><div class="panel"><span class="tag">6-MONTH ROADMAP</span><h2>Your next steps</h2><div id="road" class="road"></div><div class="row"><button class="secondary" onclick="window.print()">🖨️ Print / Save PDF</button><button class="primary" onclick="profile()">View Profile</button></div></div></section>
+<section id="roadmap" class="screen hidden"><div class="panel"><span class="tag">6-MONTH STUDY PLAN</span><h2>Your Learning Roadmap</h2>
+<p>Use this plan to build consistent learning habits, strengthen concepts and practise what you learn.</p>
+<div id="road" class="road"></div>
+<div class="row"><button class="secondary" onclick="window.print()">🖨️ Print / Save PDF</button><button class="primary" onclick="profile()">View Dashboard</button></div>
+</div></section>
 
-<footer>FutureFind • Learn. Discover. Choose your future.</footer>
+<footer>FutureFind • Learn. Discover. Build your learning.</footer>
 </div>
 
 <script>
@@ -72,12 +93,98 @@ function show(id){document.querySelectorAll(".screen").forEach(x=>x.classList.ad
 function start(){show("start")}
 function begin(){st.name=document.getElementById("name").value.trim()||"Student";st.cls=document.getElementById("cls").value;save();show("subjects")}
 function renderSubjects(){document.getElementById("subjectGrid").innerHTML=Object.entries(data).map(([id,x])=>`<div class="card" style="cursor:pointer" onclick="openTopic('${id}')"><div class="icon">${x.icon}</div><span class="tag">Class 9–10</span><h3>${x.s}</h3><p>${x.t}</p><b>Explore topic →</b></div>`).join("")}
-function openTopic(id){current=id;let x=data[id];document.getElementById("lessonBox").innerHTML=`<span class="tag">${x.s.toUpperCase()} • CLASS 9–10</span><h2>${x.t}</h2><p class="lesson">${x.c}</p><div class="note"><b>💡 Key idea:</b> ${x.k}</div><h3>🌍 Real-life connection</h3><p>${x.e}</p><div class="activity"><b>🧪 Try it:</b> ${x.a}</div><h3>🚀 Career connection</h3><p>This topic develops transferable skills. Your performance across several subjects is more useful for career exploration than a single quiz result.</p><div class="row"><button class="secondary" onclick="show('subjects')">← Subjects</button><button class="primary" onclick="quiz()">Take 5-question quiz →</button></div>`;show("lesson")}
+function openTopic(id){current=id;let x=data[id];document.getElementById("lessonBox").innerHTML=`<span class="tag">${x.s.toUpperCase()} • CLASS 9–10</span><h2>${x.t}</h2><p class="lesson">${x.c}</p><div class="note"><b>💡 Key idea:</b> ${x.k}</div><h3>🌍 Real-life connection</h3><p>${x.e}</p><div class="activity"><b>🧪 Try it:</b> ${x.a}</div><h3>🔗 Connect the Concept</h3><p>See how this concept connects with everyday life, other school subjects and practical problem-solving.</p><h3>🔗 Connect the Concept</h3><p>This topic connects with everyday life, other school subjects and practical problem-solving.</p>
+<div class="tabs"><button class="tab active" onclick="showLearnMode('simple')">🧒 Simple</button><button class="tab" onclick="showLearnMode('example')">🌍 Example</button><button class="tab" onclick="showLearnMode('steps')">🪜 Step-by-step</button></div>
+<div id="learnMode" class="explainGrid"></div><h3>🗺️ Chapter Mind Map</h3><div id="mindMap" class="mindmap"></div><h3>🎯 Learning Mission</h3><div id="missionBox"></div>
+<div class="alertbox">💡 <b>Still confused?</b> Try a different explanation mode before taking the quiz.</div><div class="row"><button class="secondary" onclick="show('subjects')">← Subjects</button><button class="primary" onclick="quiz()">Take 5-question quiz →</button></div>`;show("lesson");showLearnMode("simple");buildMindMap();buildMission()}
 function quiz(){let x=data[current];picked=[];document.getElementById("quizTitle").textContent=x.t;document.getElementById("quizBox").innerHTML=x.q.map((q,i)=>`<div class="quiz"><b>${i+1}. ${q[0]}</b>${q[1].map((o,j)=>`<button class="opt" id="o${i}_${j}" onclick="pick(${i},${j})">${String.fromCharCode(65+j)}. ${o}</button>`).join("")}</div>`).join("");show("quiz")}
 function pick(i,j){picked[i]=j;document.querySelectorAll(`[id^="o${i}_"]`).forEach(b=>b.classList.remove("sel"));document.getElementById(`o${i}_${j}`).classList.add("sel")}
-function submitQuiz(){let q=data[current].q,s=0;q.forEach((z,i)=>{if(picked[i]===z[2])s++});st.scores[current]=Math.max(st.scores[current]||0,s);st.xp+=(s*10);save();alert(`Score: ${s}/5 • +${s*10} XP`);profile()}
-function profile(){let n=Object.keys(st.scores).length,total=Object.values(st.scores).reduce((a,b)=>a+b,0),pct=n?Math.round(total/(n*5)*100):0;document.getElementById("hello").textContent=`${st.name}, your learning profile`;document.getElementById("summary").textContent=n?`You have completed ${n} topic quiz${n>1?"zes":""} and earned ${st.xp} XP. Explore more subjects before making a career decision.`:"Complete topic quizzes to start building your learning profile.";let vals={math:st.scores.math||0,science:st.scores.science||0,biology:st.scores.biology||0,ict:st.scores.ict||0,english:st.scores.english||0,bgs:st.scores.bgs||0};let skills=[["Analytical thinking",Math.round(((vals.math+vals.ict)/10)*100)],["Scientific thinking",Math.round(((vals.science+vals.biology)/10)*100)],["Communication",vals.english*20],["Social awareness",vals.bgs*20]];document.getElementById("strengths").innerHTML=skills.map(s=>`<p><b>${s[0]}</b> — ${s[1]}%</p><div class="bar"><i style="width:${s[1]}%"></i></div>`).join("");let cs=[["🔬 Science & Research",Math.round((vals.science+vals.biology)/10*100)],["💻 Technology & Engineering",Math.round((vals.math+vals.ict)/10*100)],["👩‍🏫 Education & Communication",vals.english*20],["🌍 Social Impact & Public Service",vals.bgs*20]].sort((a,b)=>b[1]-a[1]);document.getElementById("careers").innerHTML=cs.map(c=>`<p><b>${c[0]}</b> — ${c[1]}%</p><div class="bar"><i style="width:${c[1]}%"></i></div>`).join("");document.getElementById("map").innerHTML=`<p>📚 Class ${st.cls} learning</p><p>↓</p><p><b>${cs[0][0]}</b></p><p>↓</p><p>Learn → Practice → Project → Explore study pathways → Make an informed choice</p>`;show("profile")}
-function roadmap(){let m=[["Month 1","Explore","Try 3 topics from different subjects."],["Month 2","Strengthen","Revisit weak concepts and practise."],["Month 3","Connect","Do one real-life activity."],["Month 4","Create","Make a mini project/presentation."],["Month 5","Reflect","Compare interest and learning performance."],["Month 6","Plan","Explore study and career pathways."]];document.getElementById("road").innerHTML=m.map(x=>`<div class="month"><strong>${x[0]}</strong><h3>${x[1]}</h3><p>${x[2]}</p></div>`).join("");show("roadmap")}
+function submitQuiz(){
+let q=data[current].q,s=0,wrong=[];
+q.forEach((z,i)=>{if(picked[i]===z[2])s++;else wrong.push(i)});
+st.scores[current]=Math.max(st.scores[current]||0,s);st.xp+=(s*10);save();
+let msg=`<h3>🎯 Quiz Result: ${s}/5</h3><p>You earned <b>${s*10} XP</b>.</p>`;
+if(wrong.length){
+msg+=`<div class="alertbox"><b>🕵️ Mistake Detective</b><br>You missed ${wrong.length} question${wrong.length>1?"s":""}. Don't worry—mistakes are part of learning.</div>`;
+msg+=wrong.map(i=>`<div class="card" style="margin:10px 0"><b>Question ${i+1}</b><p>${q[i][0]}</p><p>Correct answer: <b>${q[i][1][q[i][2]]}</b></p><p>💡 Tip: Review the lesson's key idea and try a similar question.</p></div>`).join("");
+}
+document.getElementById("quizBox").insertAdjacentHTML("afterbegin",msg);
+document.querySelector("#quiz .actions").innerHTML=`<button class="secondary" onclick="lesson()">← Review Lesson</button><button class="primary" onclick="revision()">🔄 Add to Revision</button>`;
+}
+function profile(){
+let n=Object.keys(st.scores).length;
+let total=Object.values(st.scores).reduce((a,b)=>a+b,0);
+let pct=n?Math.round(total/(n*5)*100):0;
+document.getElementById("hello").textContent=`${st.name}, here is your learning dashboard`;
+document.getElementById("summary").textContent=n?`You have completed ${n} topic${n>1?"s":"} and earned ${st.xp} XP. Keep practising and revisiting concepts to strengthen your learning.`:"Complete topic quizzes to start building your learning dashboard.";
+document.getElementById("stats").innerHTML=
+`<div class="card"><h3>📚 Topics completed</h3><h2>${n}</h2></div>
+<div class="card"><h3>⭐ Total XP</h3><h2>${st.xp}</h2></div>
+<div class="card"><h3>🎯 Overall quiz accuracy</h3><h2>${pct}%</h2></div>
+<div class="card"><h3>📖 Subjects explored</h3><h2>${new Set(Object.keys(st.scores).map(k=>data[k].s)).size}</h2></div>`;
+document.getElementById("strengths").innerHTML=Object.entries(data).map(([id,x])=>{
+let s=st.scores[id]||0; let v=s*20;
+return `<p><b>${x.icon} ${x.s}</b> — ${s?`${s}/5`: "Not attempted"}</p><div class="bar"><i style="width:${v}%"></i></div>`;
+}).join("");
+let ach=[];
+if(n>=1)ach.push("🌱 First topic completed");
+if(n>=3)ach.push("🔥 3 topics explored");
+if(n>=5)ach.push("🏆 5-topic learner");
+if(st.xp>=100)ach.push("⭐ 100+ XP earned");
+if(!ach.length)ach.push("🎯 Complete a topic quiz to unlock your first achievement.");
+document.getElementById("achievements").innerHTML=ach.map(a=>`<p>${a}</p>`).join("");
+show("profile")
+}
+function roadmap(){
+let m=[
+["Month 1","Build a routine","Choose 2–3 topics each week and make short study notes."],
+["Month 2","Understand concepts","Use the lesson, example and activity before attempting the quiz."],
+["Month 3","Practise","Redo difficult questions and solve similar problems without looking at answers."],
+["Month 4","Apply","Connect textbook concepts with experiments, observations, writing or small projects."],
+["Month 5","Review","Revisit completed topics and focus on your weakest quiz areas."],
+["Month 6","Reflect","Review your progress, achievements and favourite learning activities."]
+];
+document.getElementById("road").innerHTML=m.map(x=>`<div class="month"><strong>${x[0]}</strong><h3>${x[1]}</h3><p>${x[2]}</p></div>`).join("");
+show("roadmap")
+}
+
+function showLearnMode(mode){
+const x=data[current];
+let content;
+if(mode==="simple") content=`<div class="explain"><b>🧒 In simple words</b><p>${x.k}</p><p>${x.c.split(".")[0]}.</p></div><div class="explain"><b>🎯 What to remember</b><p>Understand the main idea first, then practise it with an example.</p></div>`;
+if(mode==="example") content=`<div class="explain"><b>🌍 Everyday example</b><p>${x.e}</p></div><div class="explain"><b>🔎 Observe</b><p>Ask: Where can I see this idea around me?</p></div>`;
+if(mode==="steps") content=`<div class="explain"><b>1️⃣ Understand</b><p>Read the core concept and identify the key terms.</p></div><div class="explain"><b>2️⃣ Apply</b><p>Follow the example and try the activity yourself.</p></div><div class="explain"><b>3️⃣ Check</b><p>Take the quiz and review any mistakes.</p></div><div class="explain"><b>4️⃣ Recall</b><p>Explain the concept without looking at the lesson.</p></div>`;
+document.getElementById("learnMode").innerHTML=content;
+document.querySelectorAll(".tab").forEach(b=>b.classList.remove("active"));
+let labels={simple:"🧒 Simple",example:"🌍 Example",steps:"🪜 Step-by-step"};
+document.querySelectorAll(".tab").forEach(b=>{if(b.textContent===labels[mode])b.classList.add("active")});
+}
+function buildMindMap(){
+const x=data[current];
+document.getElementById("mindMap").innerHTML=`<div class="mapnode"><b>${x.t}</b></div><div class="mapline">↓</div><div class="grid2" style="width:100%"><div class="mapnode">📖 Core Concept</div><div class="mapnode">🌍 Real-life Example</div><div class="mapnode">🧪 Activity</div><div class="mapnode">🧠 Quiz</div></div><div class="mapline">↓</div><div class="mapnode"><b>🔄 Review & Remember</b></div>`;
+}
+function buildMission(){
+const key="mission_"+current;
+let done=localStorage.getItem(key)==="1";
+document.getElementById("missionBox").innerHTML=`<div class="mission ${done?"done":""}"><input type="checkbox" ${done?"checked":""} onchange="toggleMission('${key}',this.checked)"><span>Complete the activity for <b>${data[current].t}</b> and explain what you learned in your own words.</span></div>`;
+}
+function toggleMission(key,done){localStorage.setItem(key,done?"1":"0");buildMission()}
+function revision(){
+let completed=Object.keys(st.scores);
+let pending=Object.keys(data).filter(k=>!completed.includes(k));
+let html2=`<div class="card" style="margin-top:15px"><h3>🔄 Smart Revision</h3>`;
+if(!completed.length) html2+=`<p>No revision list yet. Complete a topic quiz first.</p>`;
+else html2+=`<p>Start with topics you have already studied. Revisit the key idea, redo the activity, then retake the quiz.</p>`+completed.map(k=>`<button class="secondary" style="margin:5px" onclick="openTopic('${k}')">${data[k].icon} ${data[k].t} — ${st.scores[k]}/5</button>`).join("");
+if(pending.length)html2+=`<p><b>Next to explore:</b> ${pending.map(k=>data[k].s).join(", ")}</p>`;
+html2+=`</div>`;document.getElementById("dashboardTool").innerHTML=html2;
+}
+function examRescue(){
+let entries=Object.entries(st.scores).sort((a,b)=>a[1]-b[1]);
+let html2=`<div class="card" style="margin-top:15px"><h3>🚨 Exam Rescue Mode</h3><p>Focus first on your weakest completed topics, then practise a quick quiz.</p>`;
+if(!entries.length) html2+=`<p>Complete at least one quiz to generate your personalized exam review list.</p>`;
+else html2+=entries.map(([k,s])=>`<div class="mission"><span>${data[k].icon}</span><span><b>${data[k].t}</b><br>Current score: ${s}/5</span><button class="secondary" onclick="openTopic('${k}')">Review</button></div>`).join("");
+html2+=`</div>`;document.getElementById("dashboardTool").innerHTML=html2;
+}
 renderSubjects();
 </script>
 </body>
