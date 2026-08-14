@@ -1,115 +1,88 @@
 <!doctype html>
-<html lang="en">
+<html lang="bn">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FutureFind — Class 9–10 Digital Learning</title>
+<title>FutureFind — Physics Quest</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,system-ui,sans-serif;background:#f5f7fb;color:#182238}
-button,input,select{font:inherit}button{cursor:pointer}
-.wrap{max-width:1050px;margin:auto;padding:18px}
-header{display:flex;align-items:center;justify-content:space-between;gap:15px}
-.logo{font-size:22px;font-weight:900}.mark{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#5865f2;color:#fff;margin-right:8px}
-nav{display:flex;gap:5px;flex-wrap:wrap}nav button{border:0;background:transparent;padding:9px;color:#59657a}
-.screen{display:none}.screen.show{display:block}
-.hero,.panel,.card{background:#fff;border:1px solid #e1e5ee;border-radius:20px;box-shadow:0 8px 28px rgba(20,35,65,.06)}
-.hero{padding:42px;margin-top:18px;background:linear-gradient(135deg,#fff,#eef0ff)}
-h1{font-size:clamp(40px,7vw,66px);line-height:1.02;margin:12px 0}h2{margin:8px 0 12px}h3{margin:10px 0}
-p{color:#687389;line-height:1.65}
-.tag{display:inline-block;padding:6px 10px;border-radius:99px;background:#eef0ff;color:#5865f2;font-size:12px;font-weight:800}
-.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.primary,.secondary{padding:12px 17px;border-radius:11px;font-weight:800}.primary{border:0;background:#5865f2;color:#fff}.secondary{border:1px solid #dfe3ec;background:#fff;color:#263149}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:18px}.card{padding:20px}.click{cursor:pointer;transition:.15s}.click:hover{transform:translateY(-2px)}
-.icon{font-size:30px}.form{max-width:620px;margin:25px auto;padding:25px}
-input,select{width:100%;padding:13px;border:1px solid #dfe3ec;border-radius:10px;margin:6px 0 15px;background:#fff}
-.info{padding:15px;border-radius:13px;background:#f0f2ff;border-left:4px solid #5865f2;margin:15px 0}
-.activity{padding:15px;border-radius:13px;background:#effaf5;border-left:4px solid #15966a;margin:15px 0}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.tab{padding:9px 12px;border:1px solid #dfe3ec;border-radius:10px;background:#fff}.tab.active{background:#eef0ff;border-color:#5865f2;color:#5865f2;font-weight:800}
-.explain{border:1px solid #e1e5ee;border-radius:13px;padding:14px;margin:8px 0}.mind{background:#f8f9ff;border-radius:16px;padding:18px;text-align:center}.node{display:inline-block;background:#fff;border:1px solid #dfe3ec;border-radius:12px;padding:11px 15px;margin:5px;min-width:130px}
-.quizq{padding:17px 0;border-top:1px solid #e5e8ef}.option{display:block;width:100%;text-align:left;padding:11px;margin:7px 0;border:1px solid #dfe3ec;border-radius:9px;background:#fff}.option.selected{background:#eef0ff;border-color:#5865f2}
-.result{padding:16px;border-radius:13px;background:#f8f9ff;margin-top:15px}.bar{height:9px;background:#eceff5;border-radius:99px;overflow:hidden;margin:7px 0 15px}.bar i{display:block;height:100%;background:#5865f2}
-.road{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.step{padding:15px;border:1px solid #e1e5ee;border-radius:14px;background:#fff}
-footer{text-align:center;color:#7b8598;padding:30px 0;font-size:13px}
-@media(max-width:760px){.grid,.road{grid-template-columns:1fr}nav{display:none}.hero{padding:30px 22px}}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Bengali",sans-serif;background:#090d20;color:#fff}
+button,input,select{font:inherit}button{cursor:pointer}.wrap{max-width:1100px;margin:auto;padding:18px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px}.logo{font-size:24px;font-weight:900}.logo b{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:13px;background:#7057ff;margin-right:8px}
+.stats{display:flex;gap:8px;flex-wrap:wrap}.stat{background:#171d38;border:1px solid #293052;padding:8px 12px;border-radius:12px;font-size:13px}
+.screen{display:none}.screen.show{display:block}.hero,.panel,.mission,.card{background:#121832;border:1px solid #293052;border-radius:22px;box-shadow:0 12px 35px #0005}
+.hero{margin-top:18px;padding:36px;background:radial-gradient(circle at 85% 15%,#563cf155,transparent 30%),linear-gradient(135deg,#151c3c,#10152c)}
+h1{font-size:clamp(40px,8vw,72px);line-height:1;margin:10px 0}h2{margin:8px 0 12px}h3{margin:8px 0}p{color:#b7bfd8;line-height:1.7}
+.badge{display:inline-block;background:#26204e;color:#bcaeff;padding:6px 10px;border-radius:99px;font-size:12px;font-weight:800}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.primary,.secondary{border-radius:12px;padding:12px 17px;font-weight:800}
+.primary{border:0;background:#7057ff;color:#fff}.secondary{border:1px solid #343c61;background:#181e39;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}.card{padding:19px}.card:hover{transform:translateY(-2px)}.click{cursor:pointer}.icon{font-size:32px}
+.panel{padding:25px;margin-top:18px}.map{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+.zone{padding:18px;border-radius:18px;border:1px solid #343c61;background:#171d38;min-height:150px;position:relative}.zone.locked{opacity:.5;filter:grayscale(.5)}
+.zone .num{position:absolute;right:12px;top:10px;color:#7f89a9;font-weight:900}.zone h3{margin-top:18px}
+.progress{height:9px;background:#292f4a;border-radius:99px;overflow:hidden}.progress i{display:block;height:100%;background:#7a62ff}
+.quest{background:#151c37;border:1px solid #343c61;border-radius:18px;padding:20px;margin-top:16px}.choice{width:100%;text-align:left;padding:14px;border-radius:12px;border:1px solid #343c61;background:#10162e;color:#fff;margin:7px 0}.choice:hover,.choice.selected{border-color:#7b65ff;background:#24204d}
+.good{background:#10392d!important;border-color:#31c795!important}.bad{background:#3a1720!important;border-color:#ff6680!important}
+.node{display:inline-block;padding:11px 14px;border-radius:12px;background:#171d38;border:1px solid #343c61;margin:5px}.mind{text-align:center;padding:18px;background:#0e142a;border-radius:17px}
+input,select{width:100%;padding:13px;border-radius:10px;border:1px solid #343c61;background:#10162e;color:#fff;margin:7px 0 15px}
+footer{text-align:center;color:#7c86a5;padding:30px 0}
+@media(max-width:800px){.grid,.map{grid-template-columns:1fr 1fr}}@media(max-width:520px){.grid,.map{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<header>
-<div class="logo"><span class="mark">F</span>FutureFind</div>
-<nav>
-<button onclick="showScreen('home')">Home</button>
-<button onclick="showScreen('subjects')">Learn</button>
-<button onclick="showScreen('dashboard')">Dashboard</button>
-<button onclick="showScreen('plan')">Study Plan</button>
-</nav>
-</header>
+<div class="top">
+<div class="logo"><b>⚡</b>FutureFind</div>
+<div class="stats">
+<div class="stat">❤️ জীবন: <span id="lives">3</span></div>
+<div class="stat">⭐ XP: <span id="xp">0</span></div>
+<div class="stat">🏆 Level: <span id="level">1</span></div>
+</div>
+</div>
 
 <section id="home" class="screen show">
 <div class="hero">
-<span class="tag">DIGITAL LEARNING • CLASS 9–10</span>
-<h1>Learn better.<br>Understand deeper.</h1>
-<p>FutureFind helps Class 9–10 students understand concepts, practise, identify mistakes, revise difficult topics and track learning progress.</p>
+<span class="badge">🎮 CLASS 10 PHYSICS QUEST</span>
+<h1>খেলতে খেলতে<br>Physics শিখি!</h1>
+<p>বইয়ের Physics-কে বাস্তব জীবনের ঘটনা, মিশন, puzzle, experiment ও challenge-এর সঙ্গে যুক্ত করো।</p>
 <div class="row">
-<button class="primary" onclick="showScreen('start')">🚀 Start Learning</button>
-<button class="secondary" onclick="showScreen('subjects')">📚 Explore Subjects</button>
+<button class="primary" onclick="show('profile')">🚀 অভিযান শুরু</button>
+<button class="secondary" onclick="show('map')">🗺️ Physics World</button>
 </div>
 </div>
 <div class="grid">
-<div class="card"><div class="icon">📖</div><h3>Learn</h3><p>Simple explanations, examples and step-by-step learning.</p></div>
-<div class="card"><div class="icon">🧠</div><h3>Practise</h3><p>Activities and quizzes help students check understanding.</p></div>
-<div class="card"><div class="icon">🔄</div><h3>Improve</h3><p>Review mistakes, revise difficult topics and monitor progress.</p></div>
+<div class="card"><div class="icon">🕵️</div><h3>Physics Detective</h3><p>চারপাশের ঘটনার পেছনের Physics খুঁজে বের করো।</p></div>
+<div class="card"><div class="icon">🧪</div><h3>Experiment Quest</h3><p>সহজ ও নিরাপদ activity করে concept বোঝো।</p></div>
+<div class="card"><div class="icon">👾</div><h3>Boss Challenge</h3><p>বাস্তব সমস্যার সমাধান করে chapter unlock করো।</p></div>
 </div>
 </section>
 
-<section id="start" class="screen">
-<div class="panel form">
-<span class="tag">GET STARTED</span><h2>Set up your learning profile</h2>
-<label>Name</label><input id="studentName" placeholder="Your name">
-<label>Class</label><select id="studentClass"><option value="9">Class 9</option><option value="10">Class 10</option></select>
-<div class="row"><button class="secondary" onclick="showScreen('home')">← Back</button><button class="primary" onclick="saveProfile()">Continue →</button></div>
+<section id="profile" class="screen">
+<div class="panel">
+<span class="badge">👤 PLAYER SETUP</span><h2>তোমার Physics Profile</h2>
+<label>তোমার নাম</label><input id="name" placeholder="নাম লিখো">
+<label>তোমার শ্রেণি</label><select id="cls"><option>১০ম</option></select>
+<div class="row"><button class="secondary" onclick="show('home')">← ফিরে যাও</button><button class="primary" onclick="startGame()">🎮 Play</button></div>
 </div>
 </section>
 
-<section id="subjects" class="screen">
-<div class="panel" style="padding:25px">
-<span class="tag">CLASS 9–10</span><h2>Choose a learning topic</h2><p>Click any card to open its lesson.</p>
-<div id="subjectGrid" class="grid"></div>
+<section id="map" class="screen">
+<div class="panel"><span class="badge">🗺️ PHYSICS WORLD</span><h2 id="hello">তোমার Physics Journey</h2>
+<p>একটি zone-এ ঢুকে mission complete করো। XP পেলে নতুন level খুলবে।</p>
+<div id="zones" class="map"></div>
+<div class="row"><button class="secondary" onclick="show('home')">← Home</button><button class="primary" onclick="show('dashboard')">📊 আমার Progress</button></div>
 </div>
 </section>
 
-<section id="lesson" class="screen"><div class="panel" id="lessonBox" style="padding:25px"></div></section>
-
-<section id="quiz" class="screen">
-<div class="panel" style="padding:25px">
-<span class="tag">KNOWLEDGE CHECK</span><h2 id="quizTitle"></h2>
-<div id="quizBox"></div><div id="quizResult"></div>
-<div class="row"><button class="secondary" onclick="showScreen('lesson')">← Review Topic</button><button class="primary" onclick="submitQuiz()">Submit Quiz</button></div>
-</div>
-</section>
+<section id="lesson" class="screen"><div id="lessonBox" class="panel"></div></section>
+<section id="quiz" class="screen"><div class="panel"><span class="badge">⚔️ MISSION CHALLENGE</span><h2 id="qtitle"></h2><div id="qbox"></div><div id="qresult"></div><div class="row"><button class="secondary" onclick="show('lesson')">← Mission</button><button class="primary" onclick="checkQuiz()">⚡ Answer Lock</button></div></div></section>
 
 <section id="dashboard" class="screen">
-<div class="panel" style="padding:25px"><span class="tag">MY LEARNING DASHBOARD</span><h2 id="dashHello"></h2><p id="dashSummary"></p><div id="stats" class="grid"></div></div>
-<div class="grid"><div class="card"><h3>📊 Topic Progress</h3><div id="progress"></div></div><div class="card"><h3>🏆 Achievements</h3><div id="achievements"></div></div></div>
-<div class="panel" style="padding:25px;margin-top:18px"><h3>🔄 Smart Revision</h3><div id="revision"></div><h3 style="margin-top:25px">🚨 Exam Rescue</h3><div id="exam"></div></div>
+<div class="panel"><span class="badge">🏆 PLAYER DASHBOARD</span><h2 id="dname"></h2><p id="dtext"></p><div class="progress"><i id="xpbar" style="width:0%"></i></div></div>
+<div class="grid"><div class="card"><h3>⭐ XP</h3><h2 id="dxp">0</h2></div><div class="card"><h3>🔥 Streak</h3><h2 id="dstreak">0</h2></div><div class="card"><h3>🎯 Missions</h3><h2 id="dm">0</h2></div></div>
+<div class="panel"><h3>🏅 Badges</h3><p id="badges">🔒 প্রথম mission complete করো।</p><h3>🔄 Weak Topic Rescue</h3><div id="rescue"></div></div>
 </section>
 
-<section id="plan" class="screen">
-<div class="panel" style="padding:25px"><span class="tag">STUDY PLAN</span><h2>6-Month Learning Roadmap</h2>
-<div class="road">
-<div class="step"><b>Month 1 — Routine</b><p>Study consistently and explore topics.</p></div>
-<div class="step"><b>Month 2 — Understand</b><p>Focus on concepts before memorising.</p></div>
-<div class="step"><b>Month 3 — Practise</b><p>Redo difficult questions and activities.</p></div>
-<div class="step"><b>Month 4 — Apply</b><p>Connect lessons with real-life examples.</p></div>
-<div class="step"><b>Month 5 — Review</b><p>Revisit weak topics and quiz again.</p></div>
-<div class="step"><b>Month 6 — Reflect</b><p>Review progress and learning gaps.</p></div>
-</div>
-<div class="row"><button class="secondary" onclick="window.print()">🖨️ Print / Save PDF</button><button class="primary" onclick="showScreen('dashboard')">Dashboard</button></div>
-</div>
-</section>
-
-<footer>FutureFind • Learn • Practise • Review • Grow</footer>
+<footer>FutureFind ⚡ Physics Quest • Class 10</footer>
 </div>
 
 <script>
@@ -122,129 +95,97 @@ english:{s:"English",icon:"🇬🇧",t:"Effective Communication",c:"Effective co
 bgs:{s:"Bangladesh & Global Studies",icon:"🌍",t:"Citizenship & Social Responsibility",c:"Citizenship includes rights, responsibilities and participation in society. Responsible citizens respect others, care for shared resources, follow laws and contribute to their communities. Social responsibility means recognizing how individual actions affect other people and the environment.",k:"Ask not only 'What are my rights?' but also 'What can I contribute?'",e:"Reducing waste at school, protecting shared spaces and responsibly reporting a community problem are small acts of civic responsibility.",a:"Identify one school/community problem. Suggest two actions a student can take and one action needing collective support.",q:[["Citizenship includes:",["Only rights","Rights and responsibilities","Only exams","Only voting"],1],["A responsible citizen should:",["Respect shared resources","Ignore problems","Break rules","Spread rumours"],0],["Social responsibility means:",["Considering how actions affect others","Doing everything alone","Avoiding participation","Only helping friends"],0],["A civic action is:",["Responsibly reporting a public problem","Damaging property","Spreading rumours","Ignoring safety"],0],["Communities need cooperation because:",["Many problems require collective action","One person solves everything","Rules disappear","Communication stops"],0]]}
 };
 
-let state={name:"Student",cls:"9",scores:{},xp:0};
-let currentTopic="";
-let selectedAnswers=[];
+let player={name:"Explorer",xp:0,lives:3,done:{},streak:0};
+let topic="";
+let picked=null;
 
-try{
-const saved=localStorage.getItem("futurefind_state");
-if(saved)state={...state,...JSON.parse(saved)};
-}catch(e){}
+try{let s=localStorage.getItem("ff_physics_player");if(s)player={...player,...JSON.parse(s)}}catch(e){}
+function save(){try{localStorage.setItem("ff_physics_player",JSON.stringify(player))}catch(e){}}
+function updateTop(){document.getElementById("xp").textContent=player.xp;document.getElementById("lives").textContent=player.lives;document.getElementById("level").textContent=Math.floor(player.xp/100)+1}
 
-function saveState(){
-try{localStorage.setItem("futurefind_state",JSON.stringify(state));}catch(e){}
+function show(id){
+document.querySelectorAll(".screen").forEach(x=>x.classList.remove("show"));
+document.getElementById(id).classList.add("show");window.scrollTo(0,0);
+if(id==="map")renderMap();if(id==="dashboard")renderDashboard();updateTop();
 }
 
-function showScreen(id){
-document.querySelectorAll(".screen").forEach(function(el){el.classList.remove("show");});
-const target=document.getElementById(id);
-if(!target)return;
-target.classList.add("show");
-window.scrollTo(0,0);
-if(id==="subjects")renderSubjects();
-if(id==="dashboard")renderDashboard();
+function startGame(){
+player.name=document.getElementById("name").value.trim()||"Explorer";save();show("map");
 }
 
-function saveProfile(){
-state.name=document.getElementById("studentName").value.trim()||"Student";
-state.cls=document.getElementById("studentClass").value;
-saveState();
-showScreen("subjects");
-}
-
-function renderSubjects(){
-const grid=document.getElementById("subjectGrid");
-grid.innerHTML=Object.keys(data).map(function(id){
-const x=data[id];
-return '<div class="card click" onclick="openTopic(\''+id+'\')"><div class="icon">'+x.icon+'</div><span class="tag">'+x.s+'</span><h3>'+x.t+'</h3><p>Learn the concept, try an activity and take a quiz.</p><b>Open topic →</b></div>';
+function renderMap(){
+document.getElementById("hello").textContent=player.name+"-এর Physics Journey";
+let ids=Object.keys(data);
+document.getElementById("zones").innerHTML=ids.map(function(id,i){
+let unlocked=i===0||player.done[ids[i-1]];
+let x=data[id];
+return '<div class="zone '+(unlocked?"click":"locked")+'" onclick="'+(unlocked?"openTopic('"+id+"')":"lockedMsg()")+'">'+
+'<span class="num">LEVEL '+(i+1)+'</span><div class="icon">'+x.icon+'</div><h3>'+x.t+'</h3>'+
+'<p>'+ (unlocked?"🎯 Mission available":"🔒 আগের mission শেষ করো")+'</p>'+
+'<div class="progress"><i style="width:'+(player.done[id]?100:unlocked?20:0)+'%"></i></div></div>';
 }).join("");
 }
 
-function openTopic(id){
-currentTopic=id;
-const x=data[id];
-document.getElementById("lessonBox").innerHTML=
-'<span class="tag">'+x.s.toUpperCase()+'</span><h2>'+x.t+'</h2><p>'+x.c+'</p>'+
-'<div class="info"><b>💡 Key idea</b><p>'+x.k+'</p></div>'+
-'<h3>🌍 Real-life connection</h3><p>'+x.e+'</p>'+
-'<div class="activity"><b>🧪 Try it</b><p>'+x.a+'</p></div>'+
-'<h3>🧠 Understand it another way</h3>'+
-'<div class="tabs"><button class="tab active" onclick="explainMode(\'simple\',this)">🧒 Simple</button>'+
-'<button class="tab" onclick="explainMode(\'example\',this)">🌍 Example</button>'+
-'<button class="tab" onclick="explainMode(\'steps\',this)">🪜 Step-by-step</button></div>'+
-'<div id="explanation"></div>'+
-'<h3>🗺️ Concept Map</h3><div class="mind"><div class="node"><b>'+x.t+'</b></div><div>↓</div>'+
-'<div class="node">📖 Concept</div><div class="node">🌍 Example</div><div class="node">🧪 Activity</div><div>↓</div><div class="node">🧠 Quiz → 🔄 Review</div></div>'+
-'<h3>🎯 Learning Mission</h3><p>Complete the activity above and explain the concept in your own words.</p>'+
-'<div class="row"><button class="primary" onclick="startQuiz()">Take 5-question quiz →</button>'+
-'<button class="secondary" onclick="showScreen(\'subjects\')">← Subjects</button></div>';
-showScreen("lesson");
-explainMode("simple",document.querySelector("#lessonBox .tab"));
-}
+function lockedMsg(){alert("🔒 এই zone এখনো locked! আগে আগের mission complete করো।")}
 
-function explainMode(mode,btn){
-const x=data[currentTopic],box=document.getElementById("explanation");
-if(!box)return;
-document.querySelectorAll("#lessonBox .tab").forEach(function(b){b.classList.remove("active");});
-if(btn)btn.classList.add("active");
-if(mode==="simple")box.innerHTML='<div class="explain"><b>🧒 In simple words</b><p>'+x.k+'</p></div>';
-if(mode==="example")box.innerHTML='<div class="explain"><b>🌍 Example</b><p>'+x.e+'</p></div>';
-if(mode==="steps")box.innerHTML='<div class="explain"><b>🪜 Step-by-step</b><p>1. Understand the concept.<br>2. Follow the example.<br>3. Complete the activity.<br>4. Take the quiz.<br>5. Review mistakes.</p></div>';
+function openTopic(id){
+topic=id;let x=data[id];
+document.getElementById("lessonBox").innerHTML=
+'<span class="badge">🎯 LEVEL MISSION</span><h2>'+x.t+'</h2>'+
+'<p>'+x.c+'</p><div class="quest"><h3>🕵️ Physics Detective</h3><p><b>এই ঘটনা কি তুমি তোমার চারপাশে দেখেছ?</b></p><p>'+x.e+'</p></div>'+
+'<div class="info"><b>💡 Power Hint</b><p>'+x.k+'</p></div>'+
+'<div class="activity"><h3>🧪 Experiment Quest</h3><p>'+x.a+'</p><p>👉 নিজে করে দেখো এবং কী লক্ষ্য করলে তা মনে রাখো।</p></div>'+
+'<h3>🗺️ Concept Map</h3><div class="mind"><div class="node"><b>'+x.t+'</b></div><div>↓</div><div class="node">📖 Concept</div><div class="node">🌍 বাস্তব ঘটনা</div><div class="node">🧪 Experiment</div><div>↓</div><div class="node">🎯 Mission → 👾 Boss</div></div>'+
+'<div class="row"><button class="primary" onclick="startQuiz()">⚔️ Mission Challenge</button><button class="secondary" onclick="show(\\'map\\')">← World Map</button></div>';
+show("lesson");
 }
 
 function startQuiz(){
-const x=data[currentTopic];
-selectedAnswers=[];
-document.getElementById("quizTitle").textContent=x.t;
-document.getElementById("quizResult").innerHTML="";
-document.getElementById("quizBox").innerHTML=x.q.map(function(q,i){
-return '<div class="quizq"><b>'+(i+1)+'. '+q[0]+'</b>'+
-q[1].map(function(o,j){
-return '<button class="option" id="opt_'+i+'_'+j+'" onclick="chooseAnswer('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>';
+let x=data[topic];picked=null;
+document.getElementById("qtitle").textContent="⚔️ "+x.t+" — Mission Challenge";
+document.getElementById("qresult").innerHTML="";
+document.getElementById("qbox").innerHTML=x.q.map(function(q,i){
+return '<div class="quest"><b>'+q[0]+'</b>'+q[1].map(function(o,j){
+return '<button class="choice" id="c'+i+'_'+j+'" onclick="pick('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>';
 }).join("")+'</div>';
 }).join("");
-showScreen("quiz");
+show("quiz");
 }
 
-function chooseAnswer(i,j){
-selectedAnswers[i]=j;
-document.querySelectorAll('[id^="opt_'+i+'_"]').forEach(function(b){b.classList.remove("selected");});
-const chosen=document.getElementById("opt_"+i+"_"+j);
-if(chosen)chosen.classList.add("selected");
+function pick(i,j){
+picked={i:i,j:j};
+document.querySelectorAll(".choice").forEach(x=>x.classList.remove("selected"));
+document.getElementById("c"+i+"_"+j).classList.add("selected");
 }
 
-function submitQuiz(){
-const x=data[currentTopic];let score=0,wrong=[];
-x.q.forEach(function(q,i){if(selectedAnswers[i]===q[2])score++;else wrong.push(i);});
-state.scores[currentTopic]=Math.max(state.scores[currentTopic]||0,score);
-state.xp+=score*10;saveState();
-let result='<div class="result"><h3>🎯 Score: '+score+'/5</h3><p>⭐ +'+(score*10)+' XP</p>';
-if(wrong.length){
-result+='<div class="info"><b>🕵️ Mistake Detective</b><p>Review these before trying the quiz again.</p></div>';
-wrong.forEach(function(i){result+='<p><b>Question '+(i+1)+':</b> Correct answer → <b>'+x.q[i][1][x.q[i][2]]+'</b></p>';});
-}else result+='<p>🎉 Excellent! All answers are correct.</p>';
-document.getElementById("quizResult").innerHTML=result+'</div>';
+function checkQuiz(){
+if(!picked){alert("একটি উত্তর বেছে নাও!");return}
+let x=data[topic],q=x.q[picked.i],ok=picked.j===q[2];
+document.querySelectorAll(".choice").forEach(x=>x.disabled=true);
+let correct=document.getElementById("c"+picked.i+"_"+q[2]);
+if(correct)correct.classList.add("good");
+if(ok){
+player.xp+=50;player.done[topic]=true;player.streak++;save();updateTop();
+document.getElementById("qresult").innerHTML='<div class="result good"><h3>🎉 Mission Complete!</h3><p>⭐ +50 XP</p><p>🔓 পরের Physics Zone unlock হয়েছে!</p></div>';
+}else{
+player.lives=Math.max(0,player.lives-1);player.streak=0;save();updateTop();
+document.getElementById("qresult").innerHTML='<div class="result bad"><h3>💥 Mission Failed!</h3><p>সঠিক উত্তর: <b>'+q[1][q[2]]+'</b></p><p>💡 আবার lesson দেখে চেষ্টা করো।</p></div>';
+}
 }
 
 function renderDashboard(){
-const keys=Object.keys(state.scores);let total=0;
-keys.forEach(function(k){total+=state.scores[k];});
-const accuracy=keys.length?Math.round(total/(keys.length*5)*100):0;
-document.getElementById("dashHello").textContent=state.name+"'s Learning Dashboard";
-document.getElementById("dashSummary").textContent=keys.length?"Completed "+keys.length+" topic(s) • "+state.xp+" XP":"Complete a quiz to start your dashboard.";
-document.getElementById("stats").innerHTML='<div class="card"><h3>📚 Topics</h3><h2>'+keys.length+'</h2></div><div class="card"><h3>⭐ XP</h3><h2>'+state.xp+'</h2></div><div class="card"><h3>🎯 Accuracy</h3><h2>'+accuracy+'%</h2></div>';
-document.getElementById("progress").innerHTML=Object.keys(data).map(function(k){
-const score=state.scores[k],shown=score===undefined?"Not attempted":score+"/5",width=score===undefined?0:score*20;
-return '<p><b>'+data[k].icon+' '+data[k].s+'</b> — '+shown+'</p><div class="bar"><i style="width:'+width+'%"></i></div>';
-}).join("");
-let achievements=[];if(keys.length>=1)achievements.push("🌱 First topic completed");if(keys.length>=3)achievements.push("🔥 3 topics explored");if(state.xp>=100)achievements.push("⭐ 100+ XP");
-document.getElementById("achievements").innerHTML=(achievements.length?achievements:["🎯 Complete a quiz to unlock achievements."]).map(function(x){return"<p>"+x+"</p>";}).join("");
-const sorted=keys.slice().sort(function(a,b){return state.scores[a]-state.scores[b];});
-document.getElementById("revision").innerHTML=sorted.length?sorted.map(function(k){return'<button class="secondary" style="margin:5px" onclick="openTopic(\''+k+'\')">'+data[k].icon+' '+data[k].t+' — '+state.scores[k]+'/5</button>';}).join(""):"<p>No revision topics yet.</p>";
-document.getElementById("exam").innerHTML=sorted.length?sorted.slice(0,3).map(function(k){return'<p>🔸 <b>'+data[k].t+'</b> — '+state.scores[k]+'/5 <button class="secondary" onclick="openTopic(\''+k+'\')">Review</button></p>';}).join(""):"<p>Complete quizzes to generate an exam review list.</p>";
+let keys=Object.keys(player.done);
+document.getElementById("dname").textContent="⚡ "+player.name;
+document.getElementById("dtext").textContent="তুমি "+keys.length+"টি mission complete করেছ। Level "+(Math.floor(player.xp/100)+1)+" Explorer.";
+document.getElementById("dxp").textContent=player.xp;
+document.getElementById("dstreak").textContent=player.streak;
+document.getElementById("dm").textContent=keys.length;
+document.getElementById("xpbar").style.width=(player.xp%100)+"%";
+let badges=[];if(keys.length>=1)badges.push("🥉 Physics Explorer");if(keys.length>=3)badges.push("🕵️ Physics Detective");if(player.xp>=200)badges.push("⚡ Physics Warrior");
+document.getElementById("badges").textContent=badges.length?badges.join("  •  "):"🔒 প্রথম mission complete করো।";
+document.getElementById("rescue").innerHTML=keys.length?keys.map(function(k){return'<button class="secondary" style="margin:5px" onclick="openTopic(\\''+k+'\\')">🔄 '+data[k].t+'</button>'}).join(""):"<p>Mission complete করলে এখানে revision option আসবে।";
 }
-
-renderSubjects();
+updateTop();
 </script>
 </body>
 </html>
