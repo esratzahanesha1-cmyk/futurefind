@@ -3,78 +3,113 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FutureFind — Class 9–10</title>
+<title>FutureFind — Class 9–10 Digital Learning</title>
 <style>
-:root{--p:#5865f2;--p2:#7b4fe8;--bg:#f6f7fb;--ink:#172033;--muted:#68738a;--line:#e4e7ef;--card:#fff}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif}
-button{font:inherit;cursor:pointer}.wrap{max-width:1100px;margin:auto;padding:18px}.nav{display:flex;justify-content:space-between;align-items:center;padding:8px}.logo{font-size:22px;font-weight:900}.logo b{display:inline-grid;place-items:center;width:38px;height:38px;background:linear-gradient(135deg,var(--p),var(--p2));color:white;border-radius:12px;margin-right:8px}
-nav button,.ghost{border:0;background:transparent;color:var(--muted);padding:9px 12px}.hero,.panel,.card{background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:0 10px 35px #24335b12}
-.hero{padding:45px;margin-top:18px;background:linear-gradient(135deg,#fff,#eef0ff)}h1{font-size:clamp(36px,7vw,64px);line-height:1.03;margin:12px 0}h2{margin:8px 0 10px}p{line-height:1.7;color:var(--muted)}
-.primary{background:linear-gradient(135deg,var(--p),var(--p2));color:white;border:0;padding:13px 18px;border-radius:12px;font-weight:800}.secondary{background:white;border:1px solid var(--line);padding:13px 18px;border-radius:12px;font-weight:700}
-.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:20px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin-top:20px}.card{padding:21px}.icon{font-size:30px}.tag{font-size:12px;font-weight:800;color:var(--p);background:#eef0ff;padding:5px 9px;border-radius:99px}
-.screen{margin-top:22px}.panel{padding:26px}.hidden{display:none}input,select{width:100%;padding:13px;border:1px solid var(--line);border-radius:11px;background:white;margin:7px 0 15px}
-.choices{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}.choice{text-align:left;background:white;border:2px solid var(--line);padding:18px;border-radius:15px}.choice.sel{border-color:var(--p);background:#eef0ff}
-.lesson{font-size:16px;color:#39445b}.note,.activity{padding:14px 16px;border-radius:10px;margin:16px 0}.note{background:#f0f2ff;border-left:4px solid var(--p)}.activity{background:#effaf5;border-left:4px solid #15966a}
-.quiz{border-bottom:1px solid var(--line);padding:17px 0}.opt{display:block;width:100%;text-align:left;background:white;border:1px solid var(--line);padding:11px;border-radius:9px;margin:7px 0}.opt.sel{background:#eef0ff;border-color:var(--p)}
-.bar{height:9px;background:#eceef5;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--p),var(--p2))}
-.road{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.month{padding:17px;border:1px solid var(--line);border-radius:15px}.month strong{color:var(--p)}
-footer{text-align:center;color:var(--muted);padding:35px;font-size:13px}
-@media(max-width:760px){.grid,.grid2,.road{grid-template-columns:1fr}.choices{grid-template-columns:1fr}.hero{padding:30px 22px}nav{display:none}}
-
-.mindmap{display:grid;place-items:center;gap:10px;padding:15px;background:#f8f9ff;border-radius:18px}
-.mapnode{background:white;border:1px solid var(--line);border-radius:13px;padding:12px 16px;text-align:center;box-shadow:0 5px 15px #24335b0b;min-width:160px}
-.mapline{color:var(--p);font-weight:900}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.tab{padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:white}.tab.active{background:#eef0ff;border-color:var(--p);color:var(--p);font-weight:800}
-.explainGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.explain{padding:14px;border:1px solid var(--line);border-radius:13px;background:#fff}
-.mission{display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--line);border-radius:13px;margin:9px 0;background:#fff}.mission.done{background:#effaf5;border-color:#a8dfc8}.mission input{width:auto;margin:0}
-.alertbox{padding:15px;border-radius:13px;background:#fff7e9;border-left:4px solid #e5a23a;margin:14px 0}
-@media(max-width:760px){.explainGrid{grid-template-columns:1fr}}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,system-ui,sans-serif;background:#f5f7fb;color:#182238}
+button,input,select{font:inherit}button{cursor:pointer}
+.wrap{max-width:1050px;margin:auto;padding:18px}
+header{display:flex;align-items:center;justify-content:space-between;gap:15px}
+.logo{font-size:22px;font-weight:900}.mark{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#5865f2;color:#fff;margin-right:8px}
+nav{display:flex;gap:5px;flex-wrap:wrap}nav button{border:0;background:transparent;padding:9px;color:#59657a}
+.screen{display:none}.screen.show{display:block}
+.hero,.panel,.card{background:#fff;border:1px solid #e1e5ee;border-radius:20px;box-shadow:0 8px 28px rgba(20,35,65,.06)}
+.hero{padding:42px;margin-top:18px;background:linear-gradient(135deg,#fff,#eef0ff)}
+h1{font-size:clamp(40px,7vw,66px);line-height:1.02;margin:12px 0}h2{margin:8px 0 12px}h3{margin:10px 0}
+p{color:#687389;line-height:1.65}
+.tag{display:inline-block;padding:6px 10px;border-radius:99px;background:#eef0ff;color:#5865f2;font-size:12px;font-weight:800}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.primary,.secondary{padding:12px 17px;border-radius:11px;font-weight:800}.primary{border:0;background:#5865f2;color:#fff}.secondary{border:1px solid #dfe3ec;background:#fff;color:#263149}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:18px}.card{padding:20px}.click{cursor:pointer;transition:.15s}.click:hover{transform:translateY(-2px)}
+.icon{font-size:30px}.form{max-width:620px;margin:25px auto;padding:25px}
+input,select{width:100%;padding:13px;border:1px solid #dfe3ec;border-radius:10px;margin:6px 0 15px;background:#fff}
+.info{padding:15px;border-radius:13px;background:#f0f2ff;border-left:4px solid #5865f2;margin:15px 0}
+.activity{padding:15px;border-radius:13px;background:#effaf5;border-left:4px solid #15966a;margin:15px 0}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.tab{padding:9px 12px;border:1px solid #dfe3ec;border-radius:10px;background:#fff}.tab.active{background:#eef0ff;border-color:#5865f2;color:#5865f2;font-weight:800}
+.explain{border:1px solid #e1e5ee;border-radius:13px;padding:14px;margin:8px 0}.mind{background:#f8f9ff;border-radius:16px;padding:18px;text-align:center}.node{display:inline-block;background:#fff;border:1px solid #dfe3ec;border-radius:12px;padding:11px 15px;margin:5px;min-width:130px}
+.quizq{padding:17px 0;border-top:1px solid #e5e8ef}.option{display:block;width:100%;text-align:left;padding:11px;margin:7px 0;border:1px solid #dfe3ec;border-radius:9px;background:#fff}.option.selected{background:#eef0ff;border-color:#5865f2}
+.result{padding:16px;border-radius:13px;background:#f8f9ff;margin-top:15px}.bar{height:9px;background:#eceff5;border-radius:99px;overflow:hidden;margin:7px 0 15px}.bar i{display:block;height:100%;background:#5865f2}
+.road{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.step{padding:15px;border:1px solid #e1e5ee;border-radius:14px;background:#fff}
+footer{text-align:center;color:#7b8598;padding:30px 0;font-size:13px}
+@media(max-width:760px){.grid,.road{grid-template-columns:1fr}nav{display:none}.hero{padding:30px 22px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<header class="nav"><div class="logo"><b>F</b>FutureFind</div><nav>
-<button onclick="show('home')">Home</button><button onclick="show('subjects')">Learn</button><button onclick="profile()">My Dashboard</button><button onclick="roadmap()">Study Plan</button>
-</nav></header>
+<header>
+<div class="logo"><span class="mark">F</span>FutureFind</div>
+<nav>
+<button onclick="showScreen('home')">Home</button>
+<button onclick="showScreen('subjects')">Learn</button>
+<button onclick="showScreen('dashboard')">Dashboard</button>
+<button onclick="showScreen('plan')">Study Plan</button>
+</nav>
+</header>
 
-<section id="home" class="screen">
-<div class="hero"><span class="tag">FOR CLASS 9–10</span>
+<section id="home" class="screen show">
+<div class="hero">
+<span class="tag">DIGITAL LEARNING • CLASS 9–10</span>
 <h1>Learn better.<br>Understand deeper.</h1>
-<p>FutureFind is an interactive learning platform for Class 9–10 students. Learn a concept, practise it, test your understanding, and track your learning progress.</p>
-<div class="row"><button class="primary" onclick="start()">🚀 Start Learning Journey</button><button class="secondary" onclick="show('subjects')">📚 Explore Subjects</button></div></div>
-<div class="grid">
-<div class="card"><div class="icon">📚</div><h3>Learn</h3><p>Curriculum-aligned concepts explained in simple language.</p></div>
-<div class="card"><div class="icon">🧠</div><h3>Practice</h3><p>Activities and quizzes check real understanding.</p></div>
-<div class="card"><div class="icon">🎯</div><h3>Track Your Learning</h3><p>See your quiz performance, XP, completed topics and learning progress.</p></div>
-</div></section>
-
-<section id="start" class="screen hidden"><div class="panel"><span class="tag">GET STARTED</span><h2>Tell us about you</h2>
-<p>Choose your class so FutureFind can personalize your journey.</p><label>Name</label><input id="name" placeholder="Your name"><label>Class</label><select id="cls"><option>9</option><option>10</option></select>
-<div class="row"><button class="secondary" onclick="show('home')">← Back</button><button class="primary" onclick="begin()">Continue →</button></div></div></section>
-
-<section id="subjects" class="screen hidden"><div class="panel"><span class="tag">CLASS 9–10</span><h2>Choose a subject</h2><p>Start with a topic. The same structure can later contain the full textbook.</p><div id="subjectGrid" class="grid"></div></div></section>
-
-<section id="lesson" class="screen hidden"><div id="lessonBox" class="panel"></div></section>
-<section id="quiz" class="screen hidden"><div class="panel"><span class="tag">5-QUESTION QUIZ</span><h2 id="quizTitle"></h2><div id="quizBox"></div><div class="row"><button class="secondary" onclick="openTopic(current)">← Back</button><button class="primary" onclick="submitQuiz()">Submit Quiz</button></div></div></section>
-
-<section id="profile" class="screen hidden">
-<div class="panel"><span class="tag">MY LEARNING DASHBOARD</span><h2 id="hello"></h2>
-<p id="summary"></p>
-<div id="stats" class="grid2"></div><div class="row"><button class="primary" onclick="revision()">🔄 Smart Revision</button><button class="secondary" onclick="examRescue()">🚨 Exam Rescue</button><button class="secondary" onclick="show('subjects')">📚 Continue Learning</button></div><div id="dashboardTool"></div>
+<p>FutureFind helps Class 9–10 students understand concepts, practise, identify mistakes, revise difficult topics and track learning progress.</p>
+<div class="row">
+<button class="primary" onclick="showScreen('start')">🚀 Start Learning</button>
+<button class="secondary" onclick="showScreen('subjects')">📚 Explore Subjects</button>
 </div>
-<div class="grid2">
-<div class="card"><h3>📊 Subject Progress</h3><div id="strengths"></div></div>
-<div class="card"><h3>🏆 Learning Achievements</h3><div id="achievements"></div></div>
+</div>
+<div class="grid">
+<div class="card"><div class="icon">📖</div><h3>Learn</h3><p>Simple explanations, examples and step-by-step learning.</p></div>
+<div class="card"><div class="icon">🧠</div><h3>Practise</h3><p>Activities and quizzes help students check understanding.</p></div>
+<div class="card"><div class="icon">🔄</div><h3>Improve</h3><p>Review mistakes, revise difficult topics and monitor progress.</p></div>
 </div>
 </section>
 
-<section id="roadmap" class="screen hidden"><div class="panel"><span class="tag">6-MONTH STUDY PLAN</span><h2>Your Learning Roadmap</h2>
-<p>Use this plan to build consistent learning habits, strengthen concepts and practise what you learn.</p>
-<div id="road" class="road"></div>
-<div class="row"><button class="secondary" onclick="window.print()">🖨️ Print / Save PDF</button><button class="primary" onclick="profile()">View Dashboard</button></div>
-</div></section>
+<section id="start" class="screen">
+<div class="panel form">
+<span class="tag">GET STARTED</span><h2>Set up your learning profile</h2>
+<label>Name</label><input id="studentName" placeholder="Your name">
+<label>Class</label><select id="studentClass"><option value="9">Class 9</option><option value="10">Class 10</option></select>
+<div class="row"><button class="secondary" onclick="showScreen('home')">← Back</button><button class="primary" onclick="saveProfile()">Continue →</button></div>
+</div>
+</section>
 
-<footer>FutureFind • Learn. Discover. Build your learning.</footer>
+<section id="subjects" class="screen">
+<div class="panel" style="padding:25px">
+<span class="tag">CLASS 9–10</span><h2>Choose a learning topic</h2><p>Click any card to open its lesson.</p>
+<div id="subjectGrid" class="grid"></div>
+</div>
+</section>
+
+<section id="lesson" class="screen"><div class="panel" id="lessonBox" style="padding:25px"></div></section>
+
+<section id="quiz" class="screen">
+<div class="panel" style="padding:25px">
+<span class="tag">KNOWLEDGE CHECK</span><h2 id="quizTitle"></h2>
+<div id="quizBox"></div><div id="quizResult"></div>
+<div class="row"><button class="secondary" onclick="showScreen('lesson')">← Review Topic</button><button class="primary" onclick="submitQuiz()">Submit Quiz</button></div>
+</div>
+</section>
+
+<section id="dashboard" class="screen">
+<div class="panel" style="padding:25px"><span class="tag">MY LEARNING DASHBOARD</span><h2 id="dashHello"></h2><p id="dashSummary"></p><div id="stats" class="grid"></div></div>
+<div class="grid"><div class="card"><h3>📊 Topic Progress</h3><div id="progress"></div></div><div class="card"><h3>🏆 Achievements</h3><div id="achievements"></div></div></div>
+<div class="panel" style="padding:25px;margin-top:18px"><h3>🔄 Smart Revision</h3><div id="revision"></div><h3 style="margin-top:25px">🚨 Exam Rescue</h3><div id="exam"></div></div>
+</section>
+
+<section id="plan" class="screen">
+<div class="panel" style="padding:25px"><span class="tag">STUDY PLAN</span><h2>6-Month Learning Roadmap</h2>
+<div class="road">
+<div class="step"><b>Month 1 — Routine</b><p>Study consistently and explore topics.</p></div>
+<div class="step"><b>Month 2 — Understand</b><p>Focus on concepts before memorising.</p></div>
+<div class="step"><b>Month 3 — Practise</b><p>Redo difficult questions and activities.</p></div>
+<div class="step"><b>Month 4 — Apply</b><p>Connect lessons with real-life examples.</p></div>
+<div class="step"><b>Month 5 — Review</b><p>Revisit weak topics and quiz again.</p></div>
+<div class="step"><b>Month 6 — Reflect</b><p>Review progress and learning gaps.</p></div>
+</div>
+<div class="row"><button class="secondary" onclick="window.print()">🖨️ Print / Save PDF</button><button class="primary" onclick="showScreen('dashboard')">Dashboard</button></div>
+</div>
+</section>
+
+<footer>FutureFind • Learn • Practise • Review • Grow</footer>
 </div>
 
 <script>
@@ -86,105 +121,129 @@ ict:{s:"ICT",icon:"💻",t:"Algorithms & Problem Solving",c:"An algorithm is a c
 english:{s:"English",icon:"🇬🇧",t:"Effective Communication",c:"Effective communication means expressing an idea clearly while considering the audience. A strong communicator chooses suitable words, organizes ideas logically, listens and responds to feedback. The same message may need a different style for a friend, a school report or a public presentation.",k:"Audience matters: communication is not only what you say, but how the listener or reader understands it.",e:"A science idea may need a simpler explanation for a ten-year-old and a more technical explanation for a university student.",a:"Explain one topic in two sentences for a ten-year-old, then explain it for a university student.",q:[["Effective communication needs:",["Clarity and audience awareness","The longest words","Speaking fastest","Ignoring feedback"],0],["Why does audience matter?",["People have different needs and knowledge","Everyone understands identically","It changes facts","It removes grammar"],0],["A school report usually needs:",["Organized, appropriate language","Only slang","No structure","Random ideas"],0],["Listening helps us:",["Understand and respond","Stop conversation","Avoid all feedback","Change facts"],0],["A good presentation has:",["A clear purpose and organized ideas","Only pictures","No conclusion","Unrelated examples"],0]]},
 bgs:{s:"Bangladesh & Global Studies",icon:"🌍",t:"Citizenship & Social Responsibility",c:"Citizenship includes rights, responsibilities and participation in society. Responsible citizens respect others, care for shared resources, follow laws and contribute to their communities. Social responsibility means recognizing how individual actions affect other people and the environment.",k:"Ask not only 'What are my rights?' but also 'What can I contribute?'",e:"Reducing waste at school, protecting shared spaces and responsibly reporting a community problem are small acts of civic responsibility.",a:"Identify one school/community problem. Suggest two actions a student can take and one action needing collective support.",q:[["Citizenship includes:",["Only rights","Rights and responsibilities","Only exams","Only voting"],1],["A responsible citizen should:",["Respect shared resources","Ignore problems","Break rules","Spread rumours"],0],["Social responsibility means:",["Considering how actions affect others","Doing everything alone","Avoiding participation","Only helping friends"],0],["A civic action is:",["Responsibly reporting a public problem","Damaging property","Spreading rumours","Ignoring safety"],0],["Communities need cooperation because:",["Many problems require collective action","One person solves everything","Rules disappear","Communication stops"],0]]}
 };
-let st={name:"Student",cls:"9",scores:{},xp:0};let current="";let picked=[];
-try{let x=JSON.parse(localStorage.getItem("futurefind9_10"));if(x)st={...st,...x}}catch(e){}
-function save(){localStorage.setItem("futurefind9_10",JSON.stringify(st))}
-function show(id){document.querySelectorAll(".screen").forEach(x=>x.classList.add("hidden"));document.getElementById(id).classList.remove("hidden");scrollTo(0,0)}
-function start(){show("start")}
-function begin(){st.name=document.getElementById("name").value.trim()||"Student";st.cls=document.getElementById("cls").value;save();show("subjects")}
-function renderSubjects(){document.getElementById("subjectGrid").innerHTML=Object.entries(data).map(([id,x])=>`<div class="card" style="cursor:pointer" onclick="openTopic('${id}')"><div class="icon">${x.icon}</div><span class="tag">Class 9–10</span><h3>${x.s}</h3><p>${x.t}</p><b>Explore topic →</b></div>`).join("")}
-function openTopic(id){current=id;let x=data[id];document.getElementById("lessonBox").innerHTML=`<span class="tag">${x.s.toUpperCase()} • CLASS 9–10</span><h2>${x.t}</h2><p class="lesson">${x.c}</p><div class="note"><b>💡 Key idea:</b> ${x.k}</div><h3>🌍 Real-life connection</h3><p>${x.e}</p><div class="activity"><b>🧪 Try it:</b> ${x.a}</div><h3>🔗 Connect the Concept</h3><p>This topic connects with everyday life, other school subjects and practical problem-solving.</p>
-<div class="tabs"><button class="tab active" onclick="showLearnMode('simple')">🧒 Simple</button><button class="tab" onclick="showLearnMode('example')">🌍 Example</button><button class="tab" onclick="showLearnMode('steps')">🪜 Step-by-step</button></div>
-<div id="learnMode" class="explainGrid"></div><h3>🗺️ Chapter Mind Map</h3><div id="mindMap" class="mindmap"></div><h3>🎯 Learning Mission</h3><div id="missionBox"></div>
-<div class="alertbox">💡 <b>Still confused?</b> Try a different explanation mode before taking the quiz.</div><div class="row"><button class="secondary" onclick="show('subjects')">← Subjects</button><button class="primary" onclick="quiz()">Take 5-question quiz →</button></div>`;show("lesson");showLearnMode("simple");buildMindMap();buildMission()}
-function quiz(){let x=data[current];picked=[];document.getElementById("quizTitle").textContent=x.t;document.getElementById("quizBox").innerHTML=x.q.map((q,i)=>`<div class="quiz"><b>${i+1}. ${q[0]}</b>${q[1].map((o,j)=>`<button class="opt" id="o${i}_${j}" onclick="pick(${i},${j})">${String.fromCharCode(65+j)}. ${o}</button>`).join("")}</div>`).join("");show("quiz")}
-function pick(i,j){picked[i]=j;document.querySelectorAll(`[id^="o${i}_"]`).forEach(b=>b.classList.remove("sel"));document.getElementById(`o${i}_${j}`).classList.add("sel")}
-function submitQuiz(){
-let q=data[current].q,s=0,wrong=[];
-q.forEach((z,i)=>{if(picked[i]===z[2])s++;else wrong.push(i)});
-st.scores[current]=Math.max(st.scores[current]||0,s);st.xp+=(s*10);save();
-let msg=`<h3>🎯 Quiz Result: ${s}/5</h3><p>You earned <b>${s*10} XP</b>.</p>`;
-if(wrong.length){
-msg+=`<div class="alertbox"><b>🕵️ Mistake Detective</b><br>You missed ${wrong.length} question${wrong.length>1?"s":""}. Don't worry—mistakes are part of learning.</div>`;
-msg+=wrong.map(i=>`<div class="card" style="margin:10px 0"><b>Question ${i+1}</b><p>${q[i][0]}</p><p>Correct answer: <b>${q[i][1][q[i][2]]}</b></p><p>💡 Tip: Review the lesson's key idea and try a similar question.</p></div>`).join("");
-}
-document.getElementById("quizBox").insertAdjacentHTML("afterbegin",msg);
-document.getElementById("quizBox").insertAdjacentHTML("beforeend",`<div class="row"><button class="secondary" onclick="openTopic(current)">← Review Lesson</button><button class="primary" onclick="profile()">📊 View Dashboard</button></div>`);
-}
-function profile(){
-let n=Object.keys(st.scores).length;
-let total=Object.values(st.scores).reduce((a,b)=>a+b,0);
-let pct=n?Math.round(total/(n*5)*100):0;
-document.getElementById("hello").textContent=`${st.name}, here is your learning dashboard`;
-document.getElementById("summary").textContent=n?`You have completed ${n} topic${n>1?"s":""} and earned ${st.xp} XP. Keep practising and revisiting concepts to strengthen your learning.`:"Complete topic quizzes to start building your learning dashboard.";
-document.getElementById("stats").innerHTML=
-`<div class="card"><h3>📚 Topics completed</h3><h2>${n}</h2></div>
-<div class="card"><h3>⭐ Total XP</h3><h2>${st.xp}</h2></div>
-<div class="card"><h3>🎯 Overall quiz accuracy</h3><h2>${pct}%</h2></div>
-<div class="card"><h3>📖 Subjects explored</h3><h2>${new Set(Object.keys(st.scores).map(k=>data[k].s)).size}</h2></div>`;
-document.getElementById("strengths").innerHTML=Object.entries(data).map(([id,x])=>{
-let s=st.scores[id]||0; let v=s*20;
-return `<p><b>${x.icon} ${x.s}</b> — ${s?`${s}/5`: "Not attempted"}</p><div class="bar"><i style="width:${v}%"></i></div>`;
-}).join("");
-let ach=[];
-if(n>=1)ach.push("🌱 First topic completed");
-if(n>=3)ach.push("🔥 3 topics explored");
-if(n>=5)ach.push("🏆 5-topic learner");
-if(st.xp>=100)ach.push("⭐ 100+ XP earned");
-if(!ach.length)ach.push("🎯 Complete a topic quiz to unlock your first achievement.");
-document.getElementById("achievements").innerHTML=ach.map(a=>`<p>${a}</p>`).join("");
-show("profile")
-}
-function roadmap(){
-let m=[
-["Month 1","Build a routine","Choose 2–3 topics each week and make short study notes."],
-["Month 2","Understand concepts","Use the lesson, example and activity before attempting the quiz."],
-["Month 3","Practise","Redo difficult questions and solve similar problems without looking at answers."],
-["Month 4","Apply","Connect textbook concepts with experiments, observations, writing or small projects."],
-["Month 5","Review","Revisit completed topics and focus on your weakest quiz areas."],
-["Month 6","Reflect","Review your progress, achievements and favourite learning activities."]
-];
-document.getElementById("road").innerHTML=m.map(x=>`<div class="month"><strong>${x[0]}</strong><h3>${x[1]}</h3><p>${x[2]}</p></div>`).join("");
-show("roadmap")
+
+let state={name:"Student",cls:"9",scores:{},xp:0};
+let currentTopic="";
+let selectedAnswers=[];
+
+try{
+const saved=localStorage.getItem("futurefind_state");
+if(saved)state={...state,...JSON.parse(saved)};
+}catch(e){}
+
+function saveState(){
+try{localStorage.setItem("futurefind_state",JSON.stringify(state));}catch(e){}
 }
 
-function showLearnMode(mode){
-const x=data[current];
-let content;
-if(mode==="simple") content=`<div class="explain"><b>🧒 In simple words</b><p>${x.k}</p><p>${x.c.split(".")[0]}.</p></div><div class="explain"><b>🎯 What to remember</b><p>Understand the main idea first, then practise it with an example.</p></div>`;
-if(mode==="example") content=`<div class="explain"><b>🌍 Everyday example</b><p>${x.e}</p></div><div class="explain"><b>🔎 Observe</b><p>Ask: Where can I see this idea around me?</p></div>`;
-if(mode==="steps") content=`<div class="explain"><b>1️⃣ Understand</b><p>Read the core concept and identify the key terms.</p></div><div class="explain"><b>2️⃣ Apply</b><p>Follow the example and try the activity yourself.</p></div><div class="explain"><b>3️⃣ Check</b><p>Take the quiz and review any mistakes.</p></div><div class="explain"><b>4️⃣ Recall</b><p>Explain the concept without looking at the lesson.</p></div>`;
-document.getElementById("learnMode").innerHTML=content;
-document.querySelectorAll(".tab").forEach(b=>b.classList.remove("active"));
-let labels={simple:"🧒 Simple",example:"🌍 Example",steps:"🪜 Step-by-step"};
-document.querySelectorAll(".tab").forEach(b=>{if(b.textContent===labels[mode])b.classList.add("active")});
+function showScreen(id){
+document.querySelectorAll(".screen").forEach(function(el){el.classList.remove("show");});
+const target=document.getElementById(id);
+if(!target)return;
+target.classList.add("show");
+window.scrollTo(0,0);
+if(id==="subjects")renderSubjects();
+if(id==="dashboard")renderDashboard();
 }
-function buildMindMap(){
-const x=data[current];
-document.getElementById("mindMap").innerHTML=`<div class="mapnode"><b>${x.t}</b></div><div class="mapline">↓</div><div class="grid2" style="width:100%"><div class="mapnode">📖 Core Concept</div><div class="mapnode">🌍 Real-life Example</div><div class="mapnode">🧪 Activity</div><div class="mapnode">🧠 Quiz</div></div><div class="mapline">↓</div><div class="mapnode"><b>🔄 Review & Remember</b></div>`;
+
+function saveProfile(){
+state.name=document.getElementById("studentName").value.trim()||"Student";
+state.cls=document.getElementById("studentClass").value;
+saveState();
+showScreen("subjects");
 }
-function buildMission(){
-const key="mission_"+current;
-let done=localStorage.getItem(key)==="1";
-document.getElementById("missionBox").innerHTML=`<div class="mission ${done?"done":""}"><input type="checkbox" ${done?"checked":""} onchange="toggleMission('${key}',this.checked)"><span>Complete the activity for <b>${data[current].t}</b> and explain what you learned in your own words.</span></div>`;
+
+function renderSubjects(){
+const grid=document.getElementById("subjectGrid");
+grid.innerHTML=Object.keys(data).map(function(id){
+const x=data[id];
+return '<div class="card click" onclick="openTopic(\''+id+'\')"><div class="icon">'+x.icon+'</div><span class="tag">'+x.s+'</span><h3>'+x.t+'</h3><p>Learn the concept, try an activity and take a quiz.</p><b>Open topic →</b></div>';
+}).join("");
 }
-function toggleMission(key,done){localStorage.setItem(key,done?"1":"0");buildMission()}
-function revision(){
-let completed=Object.keys(st.scores);
-let pending=Object.keys(data).filter(k=>!completed.includes(k));
-let html2=`<div class="card" style="margin-top:15px"><h3>🔄 Smart Revision</h3>`;
-if(!completed.length) html2+=`<p>No revision list yet. Complete a topic quiz first.</p>`;
-else html2+=`<p>Start with topics you have already studied. Revisit the key idea, redo the activity, then retake the quiz.</p>`+completed.map(k=>`<button class="secondary" style="margin:5px" onclick="openTopic('${k}')">${data[k].icon} ${data[k].t} — ${st.scores[k]}/5</button>`).join("");
-if(pending.length)html2+=`<p><b>Next to explore:</b> ${pending.map(k=>data[k].s).join(", ")}</p>`;
-html2+=`</div>`;document.getElementById("dashboardTool").innerHTML=html2;
+
+function openTopic(id){
+currentTopic=id;
+const x=data[id];
+document.getElementById("lessonBox").innerHTML=
+'<span class="tag">'+x.s.toUpperCase()+'</span><h2>'+x.t+'</h2><p>'+x.c+'</p>'+
+'<div class="info"><b>💡 Key idea</b><p>'+x.k+'</p></div>'+
+'<h3>🌍 Real-life connection</h3><p>'+x.e+'</p>'+
+'<div class="activity"><b>🧪 Try it</b><p>'+x.a+'</p></div>'+
+'<h3>🧠 Understand it another way</h3>'+
+'<div class="tabs"><button class="tab active" onclick="explainMode(\'simple\',this)">🧒 Simple</button>'+
+'<button class="tab" onclick="explainMode(\'example\',this)">🌍 Example</button>'+
+'<button class="tab" onclick="explainMode(\'steps\',this)">🪜 Step-by-step</button></div>'+
+'<div id="explanation"></div>'+
+'<h3>🗺️ Concept Map</h3><div class="mind"><div class="node"><b>'+x.t+'</b></div><div>↓</div>'+
+'<div class="node">📖 Concept</div><div class="node">🌍 Example</div><div class="node">🧪 Activity</div><div>↓</div><div class="node">🧠 Quiz → 🔄 Review</div></div>'+
+'<h3>🎯 Learning Mission</h3><p>Complete the activity above and explain the concept in your own words.</p>'+
+'<div class="row"><button class="primary" onclick="startQuiz()">Take 5-question quiz →</button>'+
+'<button class="secondary" onclick="showScreen(\'subjects\')">← Subjects</button></div>';
+showScreen("lesson");
+explainMode("simple",document.querySelector("#lessonBox .tab"));
 }
-function examRescue(){
-let entries=Object.entries(st.scores).sort((a,b)=>a[1]-b[1]);
-let html2=`<div class="card" style="margin-top:15px"><h3>🚨 Exam Rescue Mode</h3><p>Focus first on your weakest completed topics, then practise a quick quiz.</p>`;
-if(!entries.length) html2+=`<p>Complete at least one quiz to generate your personalized exam review list.</p>`;
-else html2+=entries.map(([k,s])=>`<div class="mission"><span>${data[k].icon}</span><span><b>${data[k].t}</b><br>Current score: ${s}/5</span><button class="secondary" onclick="openTopic('${k}')">Review</button></div>`).join("");
-html2+=`</div>`;document.getElementById("dashboardTool").innerHTML=html2;
+
+function explainMode(mode,btn){
+const x=data[currentTopic],box=document.getElementById("explanation");
+if(!box)return;
+document.querySelectorAll("#lessonBox .tab").forEach(function(b){b.classList.remove("active");});
+if(btn)btn.classList.add("active");
+if(mode==="simple")box.innerHTML='<div class="explain"><b>🧒 In simple words</b><p>'+x.k+'</p></div>';
+if(mode==="example")box.innerHTML='<div class="explain"><b>🌍 Example</b><p>'+x.e+'</p></div>';
+if(mode==="steps")box.innerHTML='<div class="explain"><b>🪜 Step-by-step</b><p>1. Understand the concept.<br>2. Follow the example.<br>3. Complete the activity.<br>4. Take the quiz.<br>5. Review mistakes.</p></div>';
 }
+
+function startQuiz(){
+const x=data[currentTopic];
+selectedAnswers=[];
+document.getElementById("quizTitle").textContent=x.t;
+document.getElementById("quizResult").innerHTML="";
+document.getElementById("quizBox").innerHTML=x.q.map(function(q,i){
+return '<div class="quizq"><b>'+(i+1)+'. '+q[0]+'</b>'+
+q[1].map(function(o,j){
+return '<button class="option" id="opt_'+i+'_'+j+'" onclick="chooseAnswer('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>';
+}).join("")+'</div>';
+}).join("");
+showScreen("quiz");
+}
+
+function chooseAnswer(i,j){
+selectedAnswers[i]=j;
+document.querySelectorAll('[id^="opt_'+i+'_"]').forEach(function(b){b.classList.remove("selected");});
+const chosen=document.getElementById("opt_"+i+"_"+j);
+if(chosen)chosen.classList.add("selected");
+}
+
+function submitQuiz(){
+const x=data[currentTopic];let score=0,wrong=[];
+x.q.forEach(function(q,i){if(selectedAnswers[i]===q[2])score++;else wrong.push(i);});
+state.scores[currentTopic]=Math.max(state.scores[currentTopic]||0,score);
+state.xp+=score*10;saveState();
+let result='<div class="result"><h3>🎯 Score: '+score+'/5</h3><p>⭐ +'+(score*10)+' XP</p>';
+if(wrong.length){
+result+='<div class="info"><b>🕵️ Mistake Detective</b><p>Review these before trying the quiz again.</p></div>';
+wrong.forEach(function(i){result+='<p><b>Question '+(i+1)+':</b> Correct answer → <b>'+x.q[i][1][x.q[i][2]]+'</b></p>';});
+}else result+='<p>🎉 Excellent! All answers are correct.</p>';
+document.getElementById("quizResult").innerHTML=result+'</div>';
+}
+
+function renderDashboard(){
+const keys=Object.keys(state.scores);let total=0;
+keys.forEach(function(k){total+=state.scores[k];});
+const accuracy=keys.length?Math.round(total/(keys.length*5)*100):0;
+document.getElementById("dashHello").textContent=state.name+"'s Learning Dashboard";
+document.getElementById("dashSummary").textContent=keys.length?"Completed "+keys.length+" topic(s) • "+state.xp+" XP":"Complete a quiz to start your dashboard.";
+document.getElementById("stats").innerHTML='<div class="card"><h3>📚 Topics</h3><h2>'+keys.length+'</h2></div><div class="card"><h3>⭐ XP</h3><h2>'+state.xp+'</h2></div><div class="card"><h3>🎯 Accuracy</h3><h2>'+accuracy+'%</h2></div>';
+document.getElementById("progress").innerHTML=Object.keys(data).map(function(k){
+const score=state.scores[k],shown=score===undefined?"Not attempted":score+"/5",width=score===undefined?0:score*20;
+return '<p><b>'+data[k].icon+' '+data[k].s+'</b> — '+shown+'</p><div class="bar"><i style="width:'+width+'%"></i></div>';
+}).join("");
+let achievements=[];if(keys.length>=1)achievements.push("🌱 First topic completed");if(keys.length>=3)achievements.push("🔥 3 topics explored");if(state.xp>=100)achievements.push("⭐ 100+ XP");
+document.getElementById("achievements").innerHTML=(achievements.length?achievements:["🎯 Complete a quiz to unlock achievements."]).map(function(x){return"<p>"+x+"</p>";}).join("");
+const sorted=keys.slice().sort(function(a,b){return state.scores[a]-state.scores[b];});
+document.getElementById("revision").innerHTML=sorted.length?sorted.map(function(k){return'<button class="secondary" style="margin:5px" onclick="openTopic(\''+k+'\')">'+data[k].icon+' '+data[k].t+' — '+state.scores[k]+'/5</button>';}).join(""):"<p>No revision topics yet.</p>";
+document.getElementById("exam").innerHTML=sorted.length?sorted.slice(0,3).map(function(k){return'<p>🔸 <b>'+data[k].t+'</b> — '+state.scores[k]+'/5 <button class="secondary" onclick="openTopic(\''+k+'\')">Review</button></p>';}).join(""):"<p>Complete quizzes to generate an exam review list.</p>";
+}
+
 renderSubjects();
 </script>
 </body>
